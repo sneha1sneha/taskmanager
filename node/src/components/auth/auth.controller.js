@@ -9,7 +9,7 @@ const AuthController = {
    * @returns {Promise.<ControllerResponse> }
    */
   login: async (httpRequest) => {
-    console.log('AA')
+    console.log('log')
     const loginData = await AuthService.doLogin(httpRequest.body);
 
     return {

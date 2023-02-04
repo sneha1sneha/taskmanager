@@ -22,8 +22,15 @@ const validateLogin = (httpRequest) => {
 
 const validateRegistration = (httpRequest) => {
   const schema = Joi.object({
+
+    username: Joi.string()
+      .required(),
+    firstname: Joi.string()
+      .required(),
+    lastname: Joi.string()
+      .required(),
     email: Joi.string()
-    .pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+      .pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
       // .required()
       .messages({
         'string.pattern.base': 'Provide valid email!'
@@ -32,7 +39,6 @@ const validateRegistration = (httpRequest) => {
   });
   return schema.validate(httpRequest.body, options);
 };
-
 
 module.exports = {
   validateLogin,

@@ -19,7 +19,7 @@ const AuthService = {
 
     try {
       const { username, password } = requestBody;
-      let queryObj = `select * from register where username = '${username}' and  password = '${password}';`;
+      let queryObj = `select * from user where username = '${username}' and  password = '${password}';`;
       const resultObj = await db.promise(queryObj);
 
       if (resultObj.length == 0) {
@@ -47,29 +47,48 @@ const AuthService = {
 
   },
 
+
   doRegister: async (requestBody) => {
-    const { username, password, email, first_name, last_name } = requestBody;
-    let checkUseremailQuery = `select * from register where username = '${username}';`;
-    const checkUseremailResult = await db.promise(checkUseremailQuery);
-    if (checkUseremailResult.length > 0) {
-      throw new BadRequestError('Username already exists!');
-    } else {
-      let insertQuery = `insert into register  (username, password,email,first_name,last_name) values ('${username}','${password}','${email}','${first_name}','${last_name}');`;
-      console.log(insertQuery);
-      await db.promise(insertQuery);
+    try {
+      const { username, password, firstname, lastname, email } = requestBody;
+      var sqlObj = `INSERT INTO user VALUES (?,?,?,?,?,?)`;
+      // making db call for inset user in to user_account table with role table inserion 
+      const resultObj = await db.promise(sqlObj, [, username, password, firstname, lastname, email])
+        .then((result) => {
+          console.log("result", result)
+          // get inserted user id from previous query
+          let queryObj = `select user_id from user where user_id = '${result.insertId}'`;
+          return db.promise(queryObj);
+        }).then((result) => {
+          // insert useride into rolelist table with user role as static
+          let roleid = 1; // user role type value = 1 and dadmin type = 2
+          let queryObj = `INSERT INTO role_list VALUES (?,?,?)`;
+          return db.promise(queryObj, [, roleid, result[0].user_id]);
+        })
+        .catch((err) => {
+          // write error into logger file
+          console.log("catch error ", err);
+        });
 
-      let selectQuery = `select * from register where username = '${username}';`;
-      console.log(selectQuery);
-      const selectResult = await db.promise(selectQuery);
-      console.log(selectResult);
-
-      payload = {
-        userId: selectResult[0].uid,
-        role: 'user',
-        username: selectResult[0].username
+      if (resultObj.length == 0) {
+        //
+        logger.error("doRegister() Insert failed");
+        //
+        throw new BadRequestError('Insert failed');
+      }
+      return {
+        resultObj
       };
+    } catch (error) {
+      logger.error("doRegister()" + error);
     }
+
   }
+
+
+
+
+
 };
 
 module.exports = AuthService;

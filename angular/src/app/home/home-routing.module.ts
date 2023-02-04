@@ -10,6 +10,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, data: { title: marker('Home') } ,canActivate:[AuthenticationGuard]},
+    // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
   ]),
 ];
 
