@@ -55,8 +55,11 @@ export class CredentialsService {
   setCredentials(credentialObj:any) {
     if (credentialObj) {
       // const storage = remember ? localStorage : sessionStorage;
-      this._credentials = credentialObj.data.accessToken;
+      this._credentials = credentialObj;
+      console.log(this._credentials)
     sessionStorage.setItem(credentialsKey, credentialObj.data.accessToken);
+    // sessionStorage.setItem(credentialsKey, credentialObj.data.userId);
+    // console.log("userId", credentialObj.data.userId);
     } else {
       this._credentials = null;
       sessionStorage.removeItem(credentialsKey);

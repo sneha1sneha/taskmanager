@@ -1,15 +1,21 @@
-<!-- <header>
+<!-- 
+ <ul class="nav">
+    cccc<li><a routerLink="/home" >Home</a></li> 
+    <li><a routerLink="/addproject" >Add Project</a></li>
+    <li><a routerLink="/tasklist"  >List</a></li>
+      ccccc <li><a routerLink="/update" >Update</a></li> 
+     <li><a routerLink="/about" >About Us</a></li>
+    <li><a routerLink="/contact" >Contact Us</a></li>
+    <li><a (click)="logout()">Log Out</a></li>
+</ul>   -->
+
+
+<header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-controls="navbar-menu"
-        aria-label="Toggle navigation"
-        (click)="toggleMenu()"
-        [attr.aria-expanded]="!menuHidden"
-      >
+      <button class="navbar-toggler" type="button" aria-controls="navbar-menu" aria-label="Toggle navigation"
+        (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
@@ -41,20 +47,4 @@
       </div>
     </div>
   </nav>
-</header> -->
-
-<header>
-  <ul class="nav">
-    <!-- <li><a routerLink="/home" >Home</a></li> -->
-    <li><a routerLink="/addproject" >Add Project</a></li>
-    <li><a routerLink="/list"  >List</a></li>
-     <!-- <li><a routerLink="/update" >Update</a></li>  -->
-     <li><a routerLink="/about" >About Us</a></li>
-    <li><a routerLink="/contact" >Contact Us</a></li>
-    <li><a (click)="logout()">Log Out</a></li>
-</ul> 
-
-
-
-
 </header>

@@ -8,7 +8,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'newindproject'
+  database: 'trial'
 });
 db.connect((err) => {
   if (err) {

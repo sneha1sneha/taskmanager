@@ -56,23 +56,32 @@ export class RegisterComponent implements OnInit {
   register() {
     console.log("register")
     try {
+      // Check if the register form is valid
       if (this.registerForm.valid) {
+        // Show the loading indicator
         this.isLoading = true;
+         // Log the form data
         console.log('this.loginForm.valid', this.registerForm.value);
+        // Call the register service
         this.authenticationService.register(this.registerForm.value).subscribe(
           (response) => {
+             // Hide the loading indicator
             this.isLoading = false;
             console.log('response', response);
+            // Navigate to the home page
             this._router.navigate(['/home']);
           },
           (error) => {
+             // Hide the loading indicator
             this.isLoading = false;
+             // Show the error
             this.errorObj = true
             log.error('login() funtion ', error);
           }
         );
       }
     } catch (error) {
+      // Log the error
       log.error('login() funtion ', error);
     }
 

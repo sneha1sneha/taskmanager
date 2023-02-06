@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { HttpServiceWrapper} from "@shared/http-service/http-service";
+import { TasklistModule } from './tasklist/tasklist.module';
+ 
 @NgModule({
   imports: [
     BrowserModule,
@@ -31,11 +33,12 @@ import { HttpServiceWrapper} from "@shared/http-service/http-service";
     ShellModule,
     HomeModule,
     AboutModule,
+    TasklistModule,
     AuthRoutingModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

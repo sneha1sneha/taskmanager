@@ -8,10 +8,16 @@
  * @param {makeValidatorCallback} ProjectRoutes.makeValidatorCallback
  * @returns {ExpressRouter}
  */
+ const authorization = require('../../middlewares/auth');
  module.exports = ({ router, ProjectController, ProjectValidator, makeValidatorCallback, makeExpressCallback }) => {
     console.log("/login/login/login")
-    // router.post('/login', makeValidatorCallback(ProjectValidator.validateLogin), makeExpressCallback(ProjectController.login));
-    router.get('/tasklist', makeExpressCallback(ProjectController.tasklist));
+   
+    router.get('/tasklist/:id', makeExpressCallback(ProjectController.tasklist));
+
+    router.get('/addproject', makeExpressCallback(ProjectController. addproject));
+
+
+    router.get('/addtask', makeExpressCallback(ProjectController.addtask));
   
     return router;
   };

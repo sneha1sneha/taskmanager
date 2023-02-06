@@ -27,9 +27,10 @@ const AuthService = {
       }
 
       payload = {
-        userId: resultObj[0].userId,
+        userId: resultObj[0].user_id,
         role: 'user',
-        username: resultObj[0].username
+        username: resultObj[0].username,
+        user:"h"
       };
 
       const accessToken = await JwtService.generateJWT({
@@ -37,6 +38,7 @@ const AuthService = {
       });
       return {
         accessToken,
+       
         ...payload
       };
 

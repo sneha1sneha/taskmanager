@@ -1,0 +1,51 @@
+
+
+
+
+
+
+table {
+    width: 100%;
+    /* margin: 30px auto; */
+    border-collapse: collapse;
+  }
+table,tr,th,td {
+    border:solid rgb(1, 1, 7);
+    /* background-color:rgb(38, 95, 148) */
+ }
+ #button1{
+    background-color: darkgreen;
+    text-align: center;
+    width:100%
+ }
+ #button2{
+    background-color: rgb(184, 21, 21);
+    text-align: center;
+    width:100%
+ }
+ .i{
+     text-align: center;
+     text-decoration: solid;
+     /* background-color:  rgb(14, 89, 139); */
+     font-size: 13px;
+    background-color:#2779BF ;
+    /* width:100%; */
+    /* overflow: hidden; */
+     
+    
+ }
+ thead{
+     background-color: rgb(14, 89, 139);
+     height: 50px;
+     color: aliceblue;
+     
+ }
+
+
+
+
+
+
+
+// ::ng-deep .ag-cell-label-container{flex-direction: row}
+// ::ng-deep .ag-header-cell-label { flex-direction: row-reverse; }

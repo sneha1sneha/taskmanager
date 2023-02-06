@@ -31,6 +31,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
     "mysql": "^2.18.1",
+    "ngx-bootstrap-navbar": "^14.0.0",
     "nodemailer": "^6.7.5",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
