@@ -12,21 +12,26 @@ export class TasklistComponent implements OnInit {
   errorObj!: boolean | false;
   tasklists:any;
   isLoading: boolean = false;
+  id:any
   constructor(private _tasklistService:TasklistService) { 
     
   }
 
   ngOnInit(): void {
-    this.getTasklist();
+    const id= sessionStorage.getItem('userid')
+    console.log("1", id)
+    this.getTasklist(id);
+    
   }
 
 
-  getTasklist() {
+  getTasklist(id:any) {
+    console.log(id)
      // Show the loading indicator
     this.isLoading = true;
     try{
       // Call the getTasklist service
-      this._tasklistService.getTasklist().subscribe(
+      this._tasklistService.getTasklist(id).subscribe(
         (response) => { 
            // Hide the loading indicator
         this.isLoading = false;

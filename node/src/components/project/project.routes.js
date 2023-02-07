@@ -17,7 +17,9 @@
     router.get('/addproject', makeExpressCallback(ProjectController. addproject));
 
 
-    router.get('/addtask', makeExpressCallback(ProjectController.addtask));
+    router.post('/addtask', makeExpressCallback(ProjectController.addtask));
+    router.get('/managetask',makeExpressCallback(ProjectController.managetask));
   
     return router;
   };
+  

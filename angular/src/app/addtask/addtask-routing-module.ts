@@ -2,22 +2,18 @@
 
 
 
-
-
-
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
-import { TasklistComponent } from './tasklist.component'; 
+import { AddtaskComponent } from './addtask.component'; 
 import { Shell } from '@app/shell/shell.service';
 import { AuthenticationGuard } from '@app/auth';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'tasklist', component: TasklistComponent, data: { title: marker('Tasklist') } },
+    { path: '**', redirectTo: '', pathMatch: 'full' },
+    { path: 'addtask', component: AddtaskComponent, data: { title: marker('AddTask') } }
     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
   ]),
 ];
@@ -27,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class TasklistRoutingModule {}
+export class AddtaskRoutingModule {}

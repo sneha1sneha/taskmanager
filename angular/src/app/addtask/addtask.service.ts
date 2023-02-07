@@ -1,14 +1,10 @@
-
-
-
-
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of,map} from 'rxjs';
 
 
 
-export interface TasklistContext {
+export interface AddtaskContext {
 //   username: string;
 //   password: string;
   // remember?: boolean;
@@ -24,7 +20,7 @@ export interface TasklistContext {
 @Injectable({
   providedIn: 'root',
 })
-export class TasklistService {
+export class AddtaskService {
   constructor(private http:HttpClient) {}
 
   /**
@@ -33,8 +29,8 @@ export class TasklistService {
    * @return The user credentials.
    */
 
-  getTasklist(id:any): Observable<any> {
-    return this.http.get(`/project/tasklist/${id}`, { observe: "response" }).pipe(
+  postaddtask(): Observable<any> {
+    return this.http.get(`/project/addtask`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log(res.body);
         return res.body;

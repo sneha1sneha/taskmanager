@@ -51,6 +51,24 @@ const ProjectController = {
             data:  addtaskdata
           }
         };
+      },
+
+
+
+      managetask: async (httpRequest) => {
+        console.log('AA')
+        // Call the doRegister function from AuthService to handle the registration
+        const managetaskdata = await ProjectService.domanagetask(httpRequest.body);
+    // Return the insertion values with a status code of 200
+        return {
+          statusCode: 200,
+          body: {
+            data:  managetaskdata
+          }
+        };
       }
-};
+
+
+
+    };
 module.exports = ProjectController;

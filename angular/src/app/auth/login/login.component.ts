@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   loginError: boolean = false;
   isLoading: boolean = false;
   loginForm!: FormGroup;
+  userid:any;
   constructor(
     private _router: Router,
     private _activatedRouter: ActivatedRoute,
@@ -59,9 +60,12 @@ export class LoginComponent implements OnInit {
             // Store the credentials
 
             this._credentialService.setCredentials(response)
+            
             console.log("id",response.data.userId)
              // Navigate to the home page
             this._router.navigate(['/home']);
+           const user= sessionStorage.getItem('userid')
+           console.log("1", user)
           },
           (error) => {
              // Hide the loading indicator

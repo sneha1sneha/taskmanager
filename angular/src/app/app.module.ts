@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { HttpServiceWrapper} from "@shared/http-service/http-service";
 import { TasklistModule } from './tasklist/tasklist.module';
+import { AddtaskModule } from './addtask/addtask.module';
  
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { TasklistModule } from './tasklist/tasklist.module';
     TasklistModule,
     AuthRoutingModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AddtaskModule
   ],
   declarations: [AppComponent, ],
   providers: [
