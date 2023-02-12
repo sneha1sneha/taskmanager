@@ -1,16 +1,22 @@
+
+
+
+
+
+
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
-import { HomeComponent } from './home.component';
+import { AddtaskComponent } from './addtask.component';
 import { Shell } from '@app/shell/shell.service';
 import { AuthenticationGuard } from '@app/auth';
 
 const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
-
+    { path: 'addtask', component: AddtaskComponent,canActivate:[AuthenticationGuard], data: { title: marker('addTask') } },
     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
   ]),
 ];
@@ -20,4 +26,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class HomeRoutingModule { }
+export class AddtaskRoutingModule { }
+
+
+

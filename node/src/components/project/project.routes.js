@@ -11,15 +11,21 @@
  const authorization = require('../../middlewares/auth');
  module.exports = ({ router, ProjectController, ProjectValidator, makeValidatorCallback, makeExpressCallback }) => {
     console.log("/login/login/login")
-   
-    router.get('/tasklist/:id', makeExpressCallback(ProjectController.tasklist));
+  //  tasklist with user id
+    router.get('/tasklist/:id',authorization, makeExpressCallback(ProjectController.tasklist));
 
-    router.get('/addproject', makeExpressCallback(ProjectController. addproject));
+    router.get('/projectlist', authorization,makeExpressCallback(ProjectController.projectlist));
 
+    router.get('/employeelist',authorization, makeExpressCallback(ProjectController.employeelist));
+
+    router.post('/addproject',authorization, makeExpressCallback(ProjectController. addproject));
+    router.put('/updateproject',authorization, makeExpressCallback(ProjectController. updateproject));
+    router.delete('/deleteproject',authorization, makeExpressCallback(ProjectController. deleteproject));
 
     router.post('/addtask', makeExpressCallback(ProjectController.addtask));
-    router.get('/managetask',makeExpressCallback(ProjectController.managetask));
+    router.get('/taskbyid/:id', makeExpressCallback(ProjectController.taskbyid));
+    router.put('/managetask/:id',makeExpressCallback(ProjectController.managetask));
   
     return router;
   };
-  
+

@@ -17,7 +17,7 @@ import { AuthenticationGuard } from '@app/auth';
 const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'tasklist', component: TasklistComponent, data: { title: marker('Tasklist') } },
+    { path: 'tasklist', component: TasklistComponent,canActivate:[AuthenticationGuard], data: { title: marker('Tasklist') } },
     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
   ]),
 ];
@@ -27,4 +27,6 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class TasklistRoutingModule {}
+export class TasklistRoutingModule {
+
+}

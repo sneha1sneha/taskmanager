@@ -10,10 +10,10 @@
          <th>Description</th>  
          <th>project_name</th>
          <th>status type</th> 
-
+         <th colspan="2">Actions</th>
          <!-- <th>Actual budget</th> -->
  
-        <!-- <th colspan="2">Actions</th> -->
+        
    </thead >     
     <tbody> 
         
@@ -24,6 +24,8 @@
        <td>{{ task.description }}</td> 
        <td>{{ task.project_name }}</td> 
        <td>{{ task.status_type }}</td> 
+       
+       <td><button id="button1"><a routerLink="/updatetask/{{task.id}}" >Edit</a></button></td>
        
        
        <!-- <td><button id="button1">View</button></td>

@@ -63,7 +63,13 @@ export class LoginComponent implements OnInit {
             
             console.log("id",response.data.userId)
              // Navigate to the home page
-            this._router.navigate(['/home']);
+            if(response.data.userId == 12){
+            console.log("adminpage")
+            this._router.navigate(['/homeadmin']);}
+            else{
+              this._router.navigate(['/home']);
+            }
+           
            const user= sessionStorage.getItem('userid')
            console.log("1", user)
           },

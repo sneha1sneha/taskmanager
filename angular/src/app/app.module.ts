@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -17,10 +17,14 @@ import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
-import { HttpServiceWrapper} from "@shared/http-service/http-service";
+import { HttpServiceWrapper } from "@shared/http-service/http-service";
 import { TasklistModule } from './tasklist/tasklist.module';
+
+import { AddtaskComponent } from './addtask/addtask.component';
 import { AddtaskModule } from './addtask/addtask.module';
- 
+import { UpdatetaskModule } from './updatetask/updatetask.module'; 
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -35,12 +39,13 @@ import { AddtaskModule } from './addtask/addtask.module';
     HomeModule,
     AboutModule,
     TasklistModule,
+    AddtaskModule,
+    UpdatetaskModule,
     AuthRoutingModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule,
-    AddtaskModule
   ],
-  declarations: [AppComponent, ],
+  declarations: [AppComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -60,4 +65,4 @@ import { AddtaskModule } from './addtask/addtask.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -24,9 +24,43 @@ const ProjectController = {
     },
 
 
+    projectlist: async (httpRequest) => {
+      console.log('log')
+      // Call the getTaskList function from ProjectService to retrieve the task list
+      const projectlistData = await ProjectService.getprojectlist(httpRequest);
+      // Return the task list data with a status code of 200
+      return {
+          statusCode: 200,
+          body: {
+              data: projectlistData
+          }
+      };
+  },
+
+
+
+
+
+  employeelist: async (httpRequest) => {
+    console.log('log')
+    // Call the getemployeeList function from ProjectService to retrieve the task list
+    const employeelistData = await ProjectService.GetEmployeeList(httpRequest);
+    // Return the employee list data with a status code of 200
+    return {
+        statusCode: 200,
+        body: {
+            data: employeelistData
+        }
+    };
+},
+
+
+
+
+
     addproject: async (httpRequest) => {
         console.log('AA')
-        // Call the doRegister function from AuthService to handle the registration
+        // Call the doaddproject function from AuthService to handle the registration
         const addprojectdata = await ProjectService.doaddproject(httpRequest.body);
     // Return the insertion values with a status code of 200
         return {
@@ -42,7 +76,7 @@ const ProjectController = {
 
       addtask: async (httpRequest) => {
         console.log('AA')
-        // Call the doRegister function from AuthService to handle the registration
+        // Call the doaddtask function from AuthService to handle the registration
         const addtaskdata = await ProjectService.doaddtask(httpRequest.body);
     // Return the insertion values with a status code of 200
         return {
@@ -53,12 +87,23 @@ const ProjectController = {
         };
       },
 
-
+      taskbyid: async (httpRequest) => {
+        console.log('log')
+        // Call the getTaskList function from ProjectService to retrieve the task list
+        const taskbyidData = await ProjectService.gettaskbyid(httpRequest);
+        // Return the task list data with a status code of 200
+        return {
+            statusCode: 200,
+            body: {
+                data: taskbyidData
+            }
+        };
+    },
 
       managetask: async (httpRequest) => {
         console.log('AA')
-        // Call the doRegister function from AuthService to handle the registration
-        const managetaskdata = await ProjectService.domanagetask(httpRequest.body);
+        // Call the domanagetask function from AuthService to handle the registration
+        const managetaskdata = await ProjectService.domanagetask(httpRequest);
     // Return the insertion values with a status code of 200
         return {
           statusCode: 200,

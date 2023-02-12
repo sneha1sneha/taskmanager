@@ -12,84 +12,76 @@
               <form (ngSubmit)="register()" [formGroup]="registerForm" novalidate>
 
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1cg">First Name</label>
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg"
                     formControlName="firstname" autocomplete="firstname" [placeholder]="' firstname' | translate" />
                   <span hidden translate>FirstName</span>
-                  <!-- <small
-             [hidden]="registerForm.controls['firstname'].valid || registerForm.controls['firstname'].untouched"  
-                 class="text-danger"
-                 translate
-               >
-                 fisrtname is required
-               </small>   -->
-                  <label class="form-label" for="form3Example1cg">First Name</label>
+                  <small [hidden]="registerForm.controls['firstname'].valid || registerForm.controls['firstname'].untouched"
+                                class="text-danger" translate>
+                                firstname is required
+                                    </small>
+               
+                 
                 </div>
 
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3cg">last name</label>
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg"
                     formControlName="lastname" autocomplete="lastname" [placeholder]="'lastname' | translate" />
                   <span hidden translate>Username</span>
-                  <!-- <small
-                 [hidden]="registerForm.controls['lastname'].valid || registerForm.controls['lastname'].untouched"
-                 class="text-danger"
-                 translate
-               >
-                 lastname is required
-               </small>   -->
+                  <small [hidden]="registerForm.controls['lastname'].valid || registerForm.controls['lastname'].untouched"
+                  class="text-danger" translate>
+                  lastname is required
+                      </small>
 
-                  <label class="form-label" for="form3Example3cg">last name</label>
+                  
                 </div>
 
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3cg">Email</label>
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" formControlName="email"
                     autocomplete="email" [placeholder]="'email' | translate" />
                   <span hidden translate>email</span>
-                  <!-- <small
-                 [hidden]="registerForm.controls['email'].valid || registerForm.controls['email'].untouched"
-                 class="text-danger"
-                 translate
-               >
-               email is required
-               </small>  
-                   -->
-                  <label class="form-label" for="form3Example3cg">Email</label>
+                  <small [hidden]="registerForm.controls['email'].valid || registerForm.controls['email'].untouched"
+                  class="text-danger" translate>
+                  email is required
+                      </small>
+
+                  
                 </div>
 
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg">username</label>
                   <input type="Username" id="form3Example4cg" class="form-control form-control-lg"
                     formControlName="username" autocomplete="username" [placeholder]="'Username' | translate" />
                   <span hidden translate>Username</span>
-                  <!-- <small
-                 [hidden]="registerForm.controls['username'].valid || registerForm.controls['username'].untouched"
-                 class="text-danger"
-                 translate
-               >
-                 Username is required
-               </small>   -->
+                  <small [hidden]="registerForm.controls['username'].valid || registerForm.controls['username'].untouched"
+                  class="text-danger" translate>
+                  username is required
+                      </small>
 
-                  <label class="form-label" for="form3Example4cg">username</label>
+
+                  
                 </div>
 
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg">password</label>
                   <input type="password" id="form3Example4cg" class="form-control form-control-lg"
                     formControlName="password" autocomplete="password" [placeholder]="'password' | translate" />
                   <span hidden translate>password</span>
-                  <!-- <small
-                [hidden]="registerForm.controls['password'].valid || registerForm.controls['password'].untouched"
-                class="text-danger"
-                translate
-              >
-              password is required
-              </small>  
-                 -->
-                  <label class="form-label" for="form3Example4cg">password</label>
+                  <small [hidden]="registerForm.controls['password'].valid || registerForm.controls['password'].untouched"
+                  class="text-danger" translate>
+                  password is required
+                      </small>
+
+                 
                 </div>
-                <div class="form-check d-flex justify-content-center mb-5">
+                <!-- <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
                     I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                   </label>
-                </div>
+                </div> -->
 
                 <div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"

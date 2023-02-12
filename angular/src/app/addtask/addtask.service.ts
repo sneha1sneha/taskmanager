@@ -29,15 +29,36 @@ export class AddtaskService {
    * @return The user credentials.
    */
 
-  postaddtask(): Observable<any> {
-    return this.http.get(`/project/addtask`, { observe: "response" }).pipe(
+
+
+   getemployeelist(): Observable<any> {
+    return this.http.get('/project/employeelist', { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
-        console.log(res.body);
+          console.log("res.body",res.body)
         return res.body;
       })
     );
   }
+   getprojectlist(): Observable<any> {
+    return this.http.get('/project/projectlist', { observe: "response" }).pipe(
+      map((res: HttpResponse<any>) => {
+          console.log("res.body",res.body)
+        return res.body;
+      })
+    );
+  }
+  
 
+
+
+  
+   postaddtask(requestObj: AddtaskContext): Observable<any> {
+    return this.http.post('/project/addtask', requestObj, { observe: "response" }).pipe(
+      map((res: HttpResponse<any>) => {
+        return res.body;
+      })
+    );
+  }
   
   
 }
