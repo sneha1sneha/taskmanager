@@ -18,20 +18,20 @@ export class TasklistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id= sessionStorage.getItem('userid')
-    console.log("1", id)
-    this.getTasklist(id);
+    // const id= sessionStorage.getItem('userid')
+    // console.log("1", id)
+    this.getTasklist();
     
   }
 
 
-  getTasklist(id:any) {
-    console.log(id)
+  getTasklist() {
+    // console.log(id)
      // Show the loading indicator
     this.isLoading = true;
     try{
       // Call the getTasklist service
-      this._tasklistService.getTasklist(id).subscribe(
+      this._tasklistService.getTasklist().subscribe(
         (response) => { 
            // Hide the loading indicator
         this.isLoading = false;

@@ -22,7 +22,8 @@ const ProjectService = {
     // Function to retrieve a list of tasks from the database
     gettasklist: async (httpRequest) => {
         console.log("httpRequest", httpRequest);
-        let id = httpRequest.params.id;
+        // let id = httpRequest.params.id;
+         let id = httpRequest.body.userId;
         try {
             // SQL query to select all tasks from the "task" table
 

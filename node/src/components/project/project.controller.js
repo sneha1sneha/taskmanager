@@ -1,3 +1,4 @@
+const { http } = require('winston');
 const ProjectService = require('./project.service');
 
 const ProjectController = {
@@ -11,7 +12,7 @@ const ProjectController = {
     // Function to handle retrieving a list of tasks
 
     tasklist: async (httpRequest) => {
-        console.log('log')
+        console.log('log',httpRequest)
         // Call the getTaskList function from ProjectService to retrieve the task list
         const tasklistData = await ProjectService.gettasklist(httpRequest);
         // Return the task list data with a status code of 200

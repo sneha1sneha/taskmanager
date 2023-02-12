@@ -12,7 +12,7 @@
  module.exports = ({ router, ProjectController, ProjectValidator, makeValidatorCallback, makeExpressCallback }) => {
     console.log("/login/login/login")
   //  tasklist with user id
-    router.get('/tasklist/:id',authorization, makeExpressCallback(ProjectController.tasklist));
+    router.get('/tasklist',authorization, makeExpressCallback(ProjectController.tasklist));
 
     router.get('/projectlist', authorization,makeExpressCallback(ProjectController.projectlist));
 

@@ -31,8 +31,8 @@ export class TasklistService {
    * @return The user credentials.
    */
 
-  getTasklist(id:any): Observable<any> {
-    return this.http.get(`/project/tasklist/${id}`, { observe: "response" }).pipe(
+  getTasklist(): Observable<any> {
+    return this.http.get(`/project/tasklist`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log(res.body);
         return res.body;
