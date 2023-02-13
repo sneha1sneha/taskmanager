@@ -7,11 +7,11 @@ import { Shell } from '@app/shell/shell.service';
 import { AuthenticationGuard } from '@app/auth';
 
 const routes: Routes = [
-  Shell.childRoutes([
-    { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'updatetask/:id', component: UpdatetaskComponent ,canActivate:[AuthenticationGuard], data: { title: marker('Updatetask') } },
-    // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
-  ]),
+//   Shell.childRoutes([
+//     { path: '', redirectTo: '', pathMatch: 'full' },
+//     { path: 'updatetask/:id', component: UpdatetaskComponent ,canActivate:[AuthenticationGuard], data: { title: marker('Updatetask') } },
+//     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
+//   ]),
 ];
 
 @NgModule({

@@ -1,20 +1,22 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
-import { Router } from '@angular/router';
 
-import { TasklistService } from './tasklist.service';
+import { TasklistadminService } from './tasklistadmin.service';
 const log = new Logger('tasklist');
 @Component({
-  selector: 'app-tasklist',
-  templateUrl: './tasklist.component.html',
-  styleUrls: ['./tasklist.component.scss']
+  selector: 'app-tasklistadmin',
+  templateUrl: './tasklistadmin.component.html',
+  styleUrls: ['./tasklistadmin.component.scss']
 })
-export class TasklistComponent implements OnInit {
+export class TasklistadminComponent implements OnInit {
   errorObj!: boolean | false;
   tasklists:any;
   isLoading: boolean = false;
   id:any
-  constructor(private _tasklistService:TasklistService,private _router: Router,) { 
+  result:any
+  constructor(private _tasklistadminService:TasklistadminService) { 
     
   }
 
@@ -32,7 +34,7 @@ export class TasklistComponent implements OnInit {
     this.isLoading = true;
     try{
       // Call the getTasklist service
-      this._tasklistService.getTasklist().subscribe(
+      this._tasklistadminService.getTasklistadmin().subscribe(
         (response) => { 
            // Hide the loading indicator
         this.isLoading = false;
@@ -58,12 +60,24 @@ export class TasklistComponent implements OnInit {
 
 }
 
-logout() 
-  {
-    console.log("logout")
-    sessionStorage.removeItem('_app_cache')
-    this._router.navigate(['/login'])
-  }
 
+
+delete(id:any){
+  console.log("ent",id)
+  alert("are u sure you want to delete ")
+  // this.isLoading = true;
+   if(true)
+    this._tasklistadminService.deletes(id).subscribe(
+        (response) => { 
+          this.result=response.data
+          console.log("result",this.result);
+          
+       
+      },
+      )
+
+   
 }
 
+
+};

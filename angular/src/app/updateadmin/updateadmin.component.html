@@ -1,22 +1,7 @@
-<!-- <p>updatetask works!</p> -->
-
-<ul class="nav">
-    <!-- <li><a routerLink="/home" >Home</a></li> -->
-    <li><a routerLink="/addproject" >Add Project</a></li>
-    <li><a routerLink="/tasklist"  >List</a></li>
-     <!-- <li><a routerLink="/update" >Update</a></li>  -->
-     <li><a routerLink="/about" >About Us</a></li>
-    <li><a routerLink="/contact" >Contact Us</a></li>
-    <li><a (click)="logout()">Log Out</a></li>
-</ul> 
-
-
-
-
-
+<!-- <p>updateadmin works!</p> -->
 <div class="container">
     <h1 class="text-center">Update Page</h1>
-    <form [formGroup]="updateForm"   (ngSubmit)="updatetask(id)" >
+    <form [formGroup]="updateForm"    (ngSubmit)="updatetask(id)"  >
       <div class="form-group">
         <label for="taskName">Task Name:</label>
         <input type="text" class="form-control" id="task_name"  formControlName="task_name" readonly>
@@ -40,14 +25,18 @@
                   Password is required
                 </small>
          
-                                        <option value="completed">completed</option>
-                                        <option value="pending">pending</option>
-                                        <option value="inprogress">inprogress</option> 
+                                        <option >completed</option>
+                                        <option >pending</option>
+                                        <option >inprogress</option> 
                                    
                                   
    
      </select>
      
+      </div>
+      <div class="form-group">
+        <label for="projectName">username Name:</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter project name" formControlName="username" >
       </div>
 
 

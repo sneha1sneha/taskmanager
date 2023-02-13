@@ -1,25 +1,27 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
-import { UpdatetaskService } from './updatetask.service'; 
+import { UpdateadminService } from './updateadmin.service'; 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
 const log = new Logger('updatetask');
 @Component({
-  selector: 'app-updatetask',
-  templateUrl: './updatetask.component.html',
-  styleUrls: ['./updatetask.component.scss']
+  selector: 'app-updateadmin',
+  templateUrl: './updateadmin.component.html',
+  styleUrls: ['./updateadmin.component.scss']
 })
-export class UpdatetaskComponent implements OnInit {
+export class UpdateadminComponent implements OnInit {
   updatetasks:any;
   isLoading: boolean = false;
   id:any
   task_id:any
   errorObj!: boolean | false;
   updateForm!:FormGroup;
-  tasks:any
+  taskadmin:any
   
-  constructor(private _updatetaskService:UpdatetaskService,
+  constructor(private _updateadminService:UpdateadminService,
     private _router: Router,
     private route: ActivatedRoute,
     private _activatedRouter: ActivatedRoute,
@@ -31,31 +33,32 @@ export class UpdatetaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.gettask(this.id);
-    // this.updatetask();
+    this.gettaskadmin(this.id);
+    // this.updatetask(id);
   }
 
 
 
 
-gettask(id:any){
+gettaskadmin(id:any){
  
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._updatetaskService.gettasks(id).subscribe(
+        this._updateadminService.gettaskadminn(id).subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
           // Store the tasklists
-          this.tasks= response.data;
-          console.log(this.tasks[0])
+          this.taskadmin= response.data;
+          console.log(this.taskadmin[0])
           this.updateForm.patchValue({
-            task_name:this.tasks[0].task_name,
-            project_name:this.tasks[0].project_name,
-            description:this.tasks[0].description,
-            status_type:this.tasks[0].status_type
+            task_name:this.taskadmin[0].task_name,
+            project_name:this.taskadmin[0].project_name,
+            description:this.taskadmin[0].description,
+            status_type:this.taskadmin[0].status_type,
+            username:this.taskadmin[0].username,
           })
          
         },
@@ -84,18 +87,19 @@ gettask(id:any){
     console.log(id)
      // Show the loading indicator
      try {
+       debugger
       // Check if the register form is valid
       if (this.updateForm.valid) {
         // Show the loading indicator
         this.isLoading = true;
         // Call the register service
-        this._updatetaskService.getupdatetask(id,this.updateForm.value).subscribe(
+        this._updateadminService.getupdatetask(id,this.updateForm.value).subscribe(
           (response) => {
             // Hide the loading indicator
             this.isLoading = false;
             console.log('response', response.data.affectedRows==1);
             // Navigate to the home page
-           this._router.navigate(['/tasklist']);
+           this._router.navigate(['/tasklistadmin']);
           },
           (error) => {
             // Hide the loading indicator
@@ -122,7 +126,7 @@ private createForm() {
     task_name: ['', Validators.required],
     description: ['', Validators.required],
     status_type: ['', Validators.required],
-
+    username:['',Validators.required],
     // remember: true,
   });
 
@@ -130,16 +134,4 @@ private createForm() {
 
 
 }
-
-
-
-
-
-logout() 
-  {
-    console.log("logout")
-    sessionStorage.removeItem('_app_cache')
-    this._router.navigate(['/login'])
-  }
-
 }

@@ -101,6 +101,10 @@ const ProjectController = {
         };
     },
 
+
+
+
+
       managetask: async (httpRequest) => {
         console.log('AA')
         // Call the domanagetask function from AuthService to handle the registration
@@ -115,6 +119,23 @@ const ProjectController = {
       },
 
 
+
+
+
+
+
+      tasklistadmin: async (httpRequest) => {
+        console.log('log',httpRequest)
+        // Call the getTaskList function from ProjectService to retrieve the task list
+        const tasklistadminData = await ProjectService.gettasklistadmin(httpRequest);
+        // Return the task list data with a status code of 200
+        return {
+            statusCode: 200,
+            body: {
+                data: tasklistadminData
+            }
+        };
+    },
 
       managetaskadmin: async (httpRequest) => {
         console.log('AA')

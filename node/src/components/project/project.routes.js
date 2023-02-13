@@ -28,8 +28,11 @@
 
 
 
+    router.get('/tasklistadmin', makeExpressCallback(ProjectController.tasklistadmin));
+    // calling taskbyid/:id'
+    router.post('/addtask', makeExpressCallback(ProjectController.addtask));
     router.put('/managetaskadmin/:id',makeExpressCallback(ProjectController.managetaskadmin));
-    router.put('/delete/:id',makeExpressCallback(ProjectController.delete));
+    router.delete('/delete/:id',makeExpressCallback(ProjectController.delete));
 
   
     return router;

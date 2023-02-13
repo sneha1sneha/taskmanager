@@ -19,12 +19,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { HttpServiceWrapper } from "@shared/http-service/http-service";
 import { TasklistModule } from './tasklist/tasklist.module';
-
+import { TasklistadminModule } from './tasklistadmin/tasklistadmin.module';
 import { AddtaskComponent } from './addtask/addtask.component';
+import { UpdateadminModule } from './updateadmin/updateadmin.module';
 import { AddtaskModule } from './addtask/addtask.module';
 import { UpdatetaskModule } from './updatetask/updatetask.module';
-import { HomeuComponent } from './homeu/homeu.component'; 
 
+import { HomeuComponent } from './homeu/homeu.component';
+import { UpdateadminComponent } from './updateadmin/updateadmin.component';
+import { TasklistadminComponent } from './tasklistadmin/tasklistadmin.component'; 
+import { HomeuModule } from './homeu/homeu.module';
 
 @NgModule({
   imports: [
@@ -39,14 +43,17 @@ import { HomeuComponent } from './homeu/homeu.component';
     ShellModule,
     HomeModule,
     AboutModule,
+    TasklistadminModule,
+    UpdateadminModule,
     TasklistModule,
+    HomeuModule,
     AddtaskModule,
     UpdatetaskModule,
     AuthRoutingModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule,
   ],
-  declarations: [AppComponent, HomeuComponent],
+  declarations: [AppComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -141,13 +141,23 @@ const ProjectService = {
         
         try {
 
-            let queryObj = `SELECT  t.task_name, t.description, p.project_name ,s.status_type
+            let queryObj =  `SELECT t.id, t.task_name, t.description, p.project_name ,s.status_type,u.username
             FROM trial.task t
             LEFT JOIN trial.project p
             ON t.project_id = p.id
             LEFT JOIN trial.status  s
             ON  t.Status_id = s.id
-            WHERE t.id =${id}; `;
+            LEFT JOIN trial.user  u
+            ON  t.user_id3 = u.user_id
+             WHERE t.id =${id}; `;
+            
+            // let queryObj = `SELECT  t.task_name, t.description, p.project_name ,s.status_type
+            // FROM trial.task t
+            // LEFT JOIN trial.project p
+            // ON t.project_id = p.id
+            // LEFT JOIN trial.status  s
+            // ON  t.Status_id = s.id
+            // WHERE t.id =${id}; `;
             // Execute the query and store the result in "taskList"
             const resultObj = await db.promise(queryObj);
             console.log("resultObj", JSON.stringify(resultObj))
@@ -186,6 +196,46 @@ domanagetask: async (httpRequest) => {
 
 
 
+
+
+
+
+
+
+
+
+      gettasklistadmin: async (httpRequest) => {
+        console.log("httpRequest", httpRequest);
+        // let id = httpRequest.params.id;
+        //  let id = httpRequest.body.userId;
+        try {
+            // SQL query to select all tasks from the "task" table
+
+            let queryObj = `SELECT t.id, t.task_name, t.description, p.project_name ,s.status_type,u.username
+            FROM trial.task t
+            LEFT JOIN trial.project p
+            ON t.project_id = p.id
+            LEFT JOIN trial.status  s
+            ON  t.Status_id = s.id
+            LEFT JOIN trial.user  u
+            ON  t.user_id3 = u.user_id`
+                  
+
+            // let queryObj = `SELECT * FROM task; `;
+            // Execute the query and store the result in "taskList"
+            const resultObj = await db.promise(queryObj);
+            console.log("resultObj", JSON.stringify(resultObj))
+            // Return the task list to the caller
+            return resultObj;
+
+        } catch (error) {
+            // Log any errors that occur
+            logger.error(error);
+        }
+
+
+    },
+
  domanagetaskadmin: async (httpRequest) => {
         console.log("httpRequest",httpRequest)
         let id = httpRequest.params.id;
@@ -193,13 +243,7 @@ domanagetask: async (httpRequest) => {
         const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,username} = httpRequest.body; 
         let queryObj = `UPDATE task
         SET task_name = '${task_name}',
-        description = '${description}',
-        planned_start_date = '${planned_start_date}',
-        planned_end_date = '${planned_end_date}',
-        planned_budget = '${planned_budget}',
-        actual_start_date = '${actual_start_date}',
-        actual_end_date = '${actual_end_date}',
-        actual_budget = '${actual_budget}',
+        description = '${description}', 
         project_id = (SELECT id FROM project WHERE project_name = '${project_name}'),
         Status_id = (SELECT id FROM status WHERE status_type = '${status_type}'),
         user_id3 = (SELECT user_id FROM user WHERE username = '${username}')
@@ -209,7 +253,14 @@ domanagetask: async (httpRequest) => {
         return resultObj;
     
           },
-    
+
+
+        //   planned_start_date = '${planned_start_date}',
+        //   planned_end_date = '${planned_end_date}',
+        //   planned_budget = '${planned_budget}',
+        //   actual_start_date = '${actual_start_date}',
+        //   actual_end_date = '${actual_end_date}',
+        //   actual_budget = '${actual_budget}',
 
  dodelete: async (httpRequest) => {
             console.log("httpRequest", httpRequest);
@@ -224,6 +275,7 @@ domanagetask: async (httpRequest) => {
                 const resultObj = await db.promise(queryObj);
                 console.log("resultObj", JSON.stringify(resultObj))
                 // Return the task list to the caller
+                
                 return resultObj;
     
     
