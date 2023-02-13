@@ -14,9 +14,9 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1cg">First Name</label>
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg"
-                    formControlName="firstname" autocomplete="firstname" [placeholder]="' firstname' | translate" />
+                    formControlName="first_name" autocomplete="first_name" [placeholder]="' first_name' | translate" />
                   <span hidden translate>FirstName</span>
-                  <small [hidden]="registerForm.controls['firstname'].valid || registerForm.controls['firstname'].untouched"
+                  <small [hidden]="registerForm.controls['first_name'].valid || registerForm.controls['first_name'].untouched"
                                 class="text-danger" translate>
                                 firstname is required
                                     </small>
@@ -27,9 +27,9 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3cg">last name</label>
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg"
-                    formControlName="lastname" autocomplete="lastname" [placeholder]="'lastname' | translate" />
+                    formControlName="last_name" autocomplete="last_name" [placeholder]="'last_name' | translate" />
                   <span hidden translate>Username</span>
-                  <small [hidden]="registerForm.controls['lastname'].valid || registerForm.controls['lastname'].untouched"
+                  <small [hidden]="registerForm.controls['last_name'].valid || registerForm.controls['last_name'].untouched"
                   class="text-danger" translate>
                   lastname is required
                       </small>

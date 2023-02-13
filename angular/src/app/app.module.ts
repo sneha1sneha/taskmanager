@@ -22,7 +22,8 @@ import { TasklistModule } from './tasklist/tasklist.module';
 
 import { AddtaskComponent } from './addtask/addtask.component';
 import { AddtaskModule } from './addtask/addtask.module';
-import { UpdatetaskModule } from './updatetask/updatetask.module'; 
+import { UpdatetaskModule } from './updatetask/updatetask.module';
+import { HomeuComponent } from './homeu/homeu.component'; 
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { UpdatetaskModule } from './updatetask/updatetask.module';
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeuComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

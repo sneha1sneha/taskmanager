@@ -112,8 +112,35 @@ const ProjectController = {
             data:  managetaskdata
           }
         };
-      }
+      },
 
+
+
+      managetaskadmin: async (httpRequest) => {
+        console.log('AA')
+        // Call the domanagetask function from AuthService to handle the registration
+        const managetaskadmindata = await ProjectService.domanagetaskadmin(httpRequest);
+    // Return the insertion values with a status code of 200
+        return {
+          statusCode: 200,
+          body: {
+            data:  managetaskadmindata
+          }
+        };
+      },
+
+      delete: async (httpRequest) => {
+        console.log('AA')
+        // Call the domanagetask function from AuthService to handle the registration
+        const deletedata = await ProjectService.dodelete(httpRequest);
+    // Return the insertion values with a status code of 200
+        return {
+          statusCode: 200,
+          body: {
+            data:  deletedata
+          }
+        };
+      }
 
 
     };

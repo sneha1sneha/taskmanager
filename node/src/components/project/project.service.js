@@ -183,7 +183,51 @@ domanagetask: async (httpRequest) => {
       },
 
 
-      
+
+
+
+ domanagetaskadmin: async (httpRequest) => {
+        console.log("httpRequest",httpRequest)
+        let id = httpRequest.params.id;
+        console.log("num",id)
+        const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,username} = httpRequest.body; 
+        let queryObj = `UPDATE task
+        SET task_name = '${task_name}',
+        description = '${description}',
+        planned_start_date = '${planned_start_date}',
+        planned_end_date = '${planned_end_date}',
+        planned_budget = '${planned_budget}',
+        actual_start_date = '${actual_start_date}',
+        actual_end_date = '${actual_end_date}',
+        actual_budget = '${actual_budget}',
+        project_id = (SELECT id FROM project WHERE project_name = '${project_name}'),
+        Status_id = (SELECT id FROM status WHERE status_type = '${status_type}'),
+        user_id3 = (SELECT user_id FROM user WHERE username = '${username}')
+        WHERE task.id = '${id}';`;
+        const resultObj = await db.promise(queryObj);
+        console.log(resultObj)
+        return resultObj;
+    
+          },
+    
+
+ dodelete: async (httpRequest) => {
+            console.log("httpRequest", httpRequest);
+            let id = httpRequest.params.id;
+           
+           
+               
+                let queryObj = `DELETE  FROM task
+                WHERE id = '${id}';`;
+    
+               
+                const resultObj = await db.promise(queryObj);
+                console.log("resultObj", JSON.stringify(resultObj))
+                // Return the task list to the caller
+                return resultObj;
+    
+    
+        },  
 
 
 

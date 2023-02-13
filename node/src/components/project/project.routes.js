@@ -25,6 +25,12 @@
     router.post('/addtask', makeExpressCallback(ProjectController.addtask));
     router.get('/taskbyid/:id', makeExpressCallback(ProjectController.taskbyid));
     router.put('/managetask/:id',makeExpressCallback(ProjectController.managetask));
+
+
+
+    router.put('/managetaskadmin/:id',makeExpressCallback(ProjectController.managetaskadmin));
+    router.put('/delete/:id',makeExpressCallback(ProjectController.delete));
+
   
     return router;
   };

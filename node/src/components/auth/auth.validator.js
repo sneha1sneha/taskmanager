@@ -21,13 +21,14 @@ const validateLogin = (httpRequest) => {
 };
 
 const validateRegistration = (httpRequest) => {
+  console.log(httpRequest)
   const schema = Joi.object({
 
     username: Joi.string()
       .required(),
-    firstname: Joi.string()
+    first_name: Joi.string()
       .required(),
-    lastname: Joi.string()
+    last_name: Joi.string()
       .required(),
     email: Joi.string()
       .pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)

@@ -105,6 +105,7 @@ export class AddtaskComponent implements OnInit {
 
 
   addtask() {
+    debugger
     console.log("addtask")
     try {
       // Check if the register form is valid
