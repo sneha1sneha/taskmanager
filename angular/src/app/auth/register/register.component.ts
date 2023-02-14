@@ -1,18 +1,4 @@
-// import { Component, OnInit } from '@angular/core';
 
-// @Component({
-//   selector: 'app-register',
-//   templateUrl: './register.component.html',
-//   styleUrls: ['./register.component.scss']
-// })
-// export class RegisterComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -31,11 +17,7 @@ const log = new Logger('register');
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  //   errorObj:boolean=false
-  // version: string | null = environment.version;
-  // error: string | undefined;
-  // registerForm!: FormGroup;
-  // isLoading = false;
+  
 
   errorObj!: boolean | false;
 
@@ -93,7 +75,7 @@ export class RegisterComponent implements OnInit {
   private createForm() {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required,Validators.minLength(8)],
       email: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],

@@ -119,7 +119,7 @@ export class AddtaskComponent implements OnInit {
             this.isLoading = false;
             console.log('response', response);
             // Navigate to the home page
-            this._router.navigate(['/home']);
+            this._router.navigate(['/tasklistadmin']);
           },
           (error) => {
             // Hide the loading indicator
@@ -148,9 +148,6 @@ export class AddtaskComponent implements OnInit {
       planned_start_date: ['', Validators.required],
       planned_end_date: ['', Validators.required],
       planned_budget: ['', Validators.required],
-      actual_start_date: ['', Validators.required],
-      actual_end_date: ['', Validators.required],
-      actual_budget: ['', Validators.required],
       username: ['', Validators.required],
 
       // remember: true,

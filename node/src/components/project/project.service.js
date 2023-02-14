@@ -20,9 +20,9 @@ const ProjectService = {
      */
 
     // Function to retrieve a list of tasks from the database
-    gettasklist: async (httpRequest) => {
+    getTaskList: async (httpRequest) => {
         console.log("httpRequest", httpRequest);
-        // let id = httpRequest.params.id;
+        
          let id = httpRequest.body.userId;
         try {
             // SQL query to select all tasks from the "task" table
@@ -50,13 +50,13 @@ const ProjectService = {
 
     },
 
-    getprojectlist: async (httpRequest) => {
+    getProjectList: async (httpRequest) => {
        
         
         try {
 
             let queryObj = `SELECT id,project_name FROM project; `;
-            // Execute the query and store the result in "taskList"
+            // Execute the query and store the result in "projrectList"
             const resultObj = await db.promise(queryObj);
             console.log("resultObj", JSON.stringify(resultObj))
             // Return the task list to the caller
@@ -77,7 +77,7 @@ const ProjectService = {
         try {
 
             let queryObj = `SELECT user_id,username FROM user; `;
-            // Execute the query and store the result in "taskList"
+            // Execute the query and store the result in "employeeList"
             const resultObj = await db.promise(queryObj);
             console.log("resultObj", JSON.stringify(resultObj))
             // Return the task list to the caller
@@ -118,9 +118,9 @@ const ProjectService = {
     doaddtask: async (requestBody) => {
 
 
-        const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,username} = requestBody;  
-        let queryObj=`INSERT INTO task (task_name, description, planned_start_date, planned_end_date, planned_budget, actual_start_date, actual_end_date, actual_budget, project_id, Status_id, user_id3)
-        SELECT '${task_name}', '${description}', '${planned_start_date}', '${planned_end_date}','${planned_budget}', '${actual_start_date}', '${actual_end_date}','${actual_budget}', project.id, status.id, user_id
+        const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,status_type,username} = requestBody;  
+        let queryObj=`INSERT INTO task (task_name, description, planned_start_date, planned_end_date, planned_budget, project_id, Status_id, user_id3)
+        SELECT '${task_name}', '${description}', '${planned_start_date}', '${planned_end_date}','${planned_budget}', project.id, status.id, user_id
         FROM status, user, project
         WHERE status.status_type = "pending"
         AND project.project_name = '${project_name}'
@@ -211,7 +211,7 @@ domanagetask: async (httpRequest) => {
         try {
             // SQL query to select all tasks from the "task" table
 
-            let queryObj = `SELECT t.id, t.task_name, t.description, p.project_name ,s.status_type,u.username
+            let queryObj = `SELECT t.id, t.task_name, t.description, p.project_name ,s.status_type,u.username,t.planned_start_date,t.planned_end_date,t.planned_budget
             FROM trial.task t
             LEFT JOIN trial.project p
             ON t.project_id = p.id

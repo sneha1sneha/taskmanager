@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { Router } from '@angular/router';
-
 import { TasklistService } from './tasklist.service';
 const log = new Logger('tasklist');
 @Component({

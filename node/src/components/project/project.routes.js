@@ -12,27 +12,27 @@
  module.exports = ({ router, ProjectController, ProjectValidator, makeValidatorCallback, makeExpressCallback }) => {
     console.log("/login/login/login")
   //  tasklist with user id
-    router.get('/tasklist',authorization, makeExpressCallback(ProjectController.tasklist));
+    router.get('/tasklist',authorization, makeExpressCallback(ProjectController.taskList));
 
-    router.get('/projectlist', authorization,makeExpressCallback(ProjectController.projectlist));
+    router.get('/projectlist', authorization,makeExpressCallback(ProjectController.projectList));
 
-    router.get('/employeelist',authorization, makeExpressCallback(ProjectController.employeelist));
+    router.get('/employeelist',authorization, makeExpressCallback(ProjectController.employeeList));
 
     router.post('/addproject',authorization, makeExpressCallback(ProjectController. addproject));
     router.put('/updateproject',authorization, makeExpressCallback(ProjectController. updateproject));
     router.delete('/deleteproject',authorization, makeExpressCallback(ProjectController. deleteproject));
 
-    router.post('/addtask', makeExpressCallback(ProjectController.addtask));
-    router.get('/taskbyid/:id', makeExpressCallback(ProjectController.taskbyid));
-    router.put('/managetask/:id',makeExpressCallback(ProjectController.managetask));
+    // router.post('/addtask',authorization, makeExpressCallback(ProjectController.addtask));
+    router.get('/taskbyid/:id',authorization, makeExpressCallback(ProjectController.taskbyid));
+    router.put('/managetask/:id',authorization,makeExpressCallback(ProjectController.managetask));
 
 
 
-    router.get('/tasklistadmin', makeExpressCallback(ProjectController.tasklistadmin));
+    router.get('/tasklistadmin',authorization, makeExpressCallback(ProjectController.tasklistadmin));
     // calling taskbyid/:id'
-    router.post('/addtask', makeExpressCallback(ProjectController.addtask));
-    router.put('/managetaskadmin/:id',makeExpressCallback(ProjectController.managetaskadmin));
-    router.delete('/delete/:id',makeExpressCallback(ProjectController.delete));
+    router.post('/addtask', authorization,makeExpressCallback(ProjectController.addtask));
+    router.put('/managetaskadmin/:id',authorization,makeExpressCallback(ProjectController.managetaskadmin));
+    router.delete('/delete/:id',authorization,makeExpressCallback(ProjectController.delete));
 
   
     return router;

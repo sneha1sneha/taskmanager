@@ -11,29 +11,29 @@ const ProjectController = {
      */
     // Function to handle retrieving a list of tasks
 
-    tasklist: async (httpRequest) => {
+    taskList: async (httpRequest) => {
         console.log('log',httpRequest)
         // Call the getTaskList function from ProjectService to retrieve the task list
-        const tasklistData = await ProjectService.gettasklist(httpRequest);
+        const taskListData = await ProjectService.getTaskList(httpRequest);
         // Return the task list data with a status code of 200
         return {
             statusCode: 200,
             body: {
-                data: tasklistData
+                data: taskListData
             }
         };
     },
 
 
-    projectlist: async (httpRequest) => {
+    projectList: async (httpRequest) => {
       console.log('log')
-      // Call the getTaskList function from ProjectService to retrieve the task list
-      const projectlistData = await ProjectService.getprojectlist(httpRequest);
-      // Return the task list data with a status code of 200
+      // Call the getProjectList function from ProjectService to retrieve the task list
+      const projectListData = await ProjectService.getProjectList(httpRequest);
+      // Return the Project list data with a status code of 200
       return {
           statusCode: 200,
           body: {
-              data: projectlistData
+              data: projectListData
           }
       };
   },
@@ -42,15 +42,15 @@ const ProjectController = {
 
 
 
-  employeelist: async (httpRequest) => {
+  employeeList: async (httpRequest) => {
     console.log('log')
     // Call the getemployeeList function from ProjectService to retrieve the task list
-    const employeelistData = await ProjectService.GetEmployeeList(httpRequest);
+    const employeeListData = await ProjectService.GetEmployeeList(httpRequest);
     // Return the employee list data with a status code of 200
     return {
         statusCode: 200,
         body: {
-            data: employeelistData
+            data: employeeListData
         }
     };
 },
@@ -77,7 +77,7 @@ const ProjectController = {
 
       addtask: async (httpRequest) => {
         console.log('AA')
-        // Call the doaddtask function from AuthService to handle the registration
+        // Call the doaddtask function from ProjectService to handle the registration
         const addtaskdata = await ProjectService.doaddtask(httpRequest.body);
     // Return the insertion values with a status code of 200
         return {
@@ -90,9 +90,9 @@ const ProjectController = {
 
       taskbyid: async (httpRequest) => {
         console.log('log')
-        // Call the getTaskList function from ProjectService to retrieve the task list
+       
         const taskbyidData = await ProjectService.gettaskbyid(httpRequest);
-        // Return the task list data with a status code of 200
+        
         return {
             statusCode: 200,
             body: {
@@ -107,7 +107,7 @@ const ProjectController = {
 
       managetask: async (httpRequest) => {
         console.log('AA')
-        // Call the domanagetask function from AuthService to handle the registration
+        // Call the domanagetask function from ProjectService to handle the registration
         const managetaskdata = await ProjectService.domanagetask(httpRequest);
     // Return the insertion values with a status code of 200
         return {
@@ -139,7 +139,7 @@ const ProjectController = {
 
       managetaskadmin: async (httpRequest) => {
         console.log('AA')
-        // Call the domanagetask function from AuthService to handle the registration
+        // Call the domanagetask function from ProjectService to handle the registration
         const managetaskadmindata = await ProjectService.domanagetaskadmin(httpRequest);
     // Return the insertion values with a status code of 200
         return {
@@ -152,9 +152,9 @@ const ProjectController = {
 
       delete: async (httpRequest) => {
         console.log('AA')
-        // Call the domanagetask function from AuthService to handle the registration
+        // Call the dodelete function from ProjectService to handle the registration
         const deletedata = await ProjectService.dodelete(httpRequest);
-    // Return the insertion values with a status code of 200
+    // Return the deleted with a status code of 200
         return {
           statusCode: 200,
           body: {

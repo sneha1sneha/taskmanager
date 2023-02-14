@@ -64,9 +64,9 @@ export class TasklistadminComponent implements OnInit {
 
 delete(id:any){
   console.log("ent",id)
-  alert("are u sure you want to delete ")
+  
   // this.isLoading = true;
-   if(true)
+   
     this._tasklistadminService.deletes(id).subscribe(
         (response) => { 
           this.result=response.data

@@ -14,7 +14,7 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1cg">First Name</label>
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg"
-                    formControlName="first_name" autocomplete="first_name" [placeholder]="' first_name' | translate" />
+                    formControlName="first_name" autocomplete="first_name" [placeholder]="' FirstName' | translate" />
                   <span hidden translate>FirstName</span>
                   <small [hidden]="registerForm.controls['first_name'].valid || registerForm.controls['first_name'].untouched"
                                 class="text-danger" translate>
@@ -27,7 +27,7 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3cg">last name</label>
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg"
-                    formControlName="last_name" autocomplete="last_name" [placeholder]="'last_name' | translate" />
+                    formControlName="last_name" autocomplete="last_name" [placeholder]="'Last Name' | translate" />
                   <span hidden translate>Username</span>
                   <small [hidden]="registerForm.controls['last_name'].valid || registerForm.controls['last_name'].untouched"
                   class="text-danger" translate>
@@ -40,13 +40,14 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3cg">Email</label>
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" formControlName="email"
-                    autocomplete="email" [placeholder]="'email' | translate" />
+                    autocomplete="email" [placeholder]="'Email' | translate" />
                   <span hidden translate>email</span>
-                  <small [hidden]="registerForm.controls['email'].valid || registerForm.controls['email'].untouched"
+                  <small [hidden]="registerForm.controls['email'].valid || registerForm.controls['email'].untouched" 
                   class="text-danger" translate>
                   email is required
                       </small>
-
+                      
+                     
                   
                 </div>
 
@@ -67,7 +68,7 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example4cg">password</label>
                   <input type="password" id="form3Example4cg" class="form-control form-control-lg"
-                    formControlName="password" autocomplete="password" [placeholder]="'password' | translate" />
+                    formControlName="password" autocomplete="password" [placeholder]="'Password' | translate" />
                   <span hidden translate>password</span>
                   <small [hidden]="registerForm.controls['password'].valid || registerForm.controls['password'].untouched"
                   class="text-danger" translate>

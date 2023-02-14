@@ -32,6 +32,7 @@ export class UpdatetaskComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.gettask(this.id);
+   
     // this.updatetask();
   }
 
@@ -75,6 +76,7 @@ gettask(id:any){
   
   
 }
+
 
 
 

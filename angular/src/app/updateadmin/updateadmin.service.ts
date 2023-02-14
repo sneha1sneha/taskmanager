@@ -38,6 +38,14 @@ export class UpdateadminService {
   }
 
 
+  getemployeelist(): Observable<any> {
+    return this.http.get('/project/employeelist', { observe: "response" }).pipe(
+      map((res: HttpResponse<any>) => {
+          console.log("res.body",res.body)
+        return res.body;
+      })
+    );
+  }
 
 
 

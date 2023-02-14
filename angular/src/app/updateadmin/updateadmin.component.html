@@ -34,10 +34,18 @@
      </select>
      
       </div>
-      <div class="form-group">
-        <label for="projectName">username Name:</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter project name" formControlName="username" >
-      </div>
+      <div class="form-outline mb-4">
+        <label for="inputState">Employee</label>
+        <select class="form-select" aria-label="Default select example"
+            formControlName="username">
+            <option *ngFor="let employee of employeelists"  
+           >
+        {{employee.username}}  
+    </option>  
+        </select>
+        <label class="form-label" for="form3Example3cg"></label>
+    </div>
+
 
 
       <div class="d-flex justify-content-center">

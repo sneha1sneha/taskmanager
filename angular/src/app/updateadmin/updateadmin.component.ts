@@ -20,7 +20,7 @@ export class UpdateadminComponent implements OnInit {
   errorObj!: boolean | false;
   updateForm!:FormGroup;
   taskadmin:any
-  
+  employeelists:any
   constructor(private _updateadminService:UpdateadminService,
     private _router: Router,
     private route: ActivatedRoute,
@@ -34,6 +34,7 @@ export class UpdateadminComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.gettaskadmin(this.id);
+      this.employeelist();
     // this.updatetask(id);
   }
 
@@ -78,6 +79,53 @@ gettaskadmin(id:any){
   
   
 }
+
+
+
+
+
+ employeelist(){
+    console.log("enterd")
+    
+      try{
+        // Call the getTasklist service
+        this._updateadminService.getemployeelist().subscribe(
+          (response) => { 
+             // Hide the loading indicator
+          this.isLoading = false;
+          // Store the tasklists
+          this.employeelists= response.data;
+          debugger
+        },
+        (error) => {
+          // Hide the loading indicator
+          this.isLoading = false;
+          // Show the error
+          this.errorObj = true
+         
+        } );
+      }
+  
+      catch (error) {
+        // Log the error
+        log.error('tasklist() funtion ', error);
+      }
+  
+  
+  
+  }
+   
+  
+
+
+
+
+
+
+
+
+
+
 
 
 

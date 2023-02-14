@@ -1,21 +1,24 @@
 <!-- <p>tasklistadmin works!</p> -->
 
 
+ 
+<table class="table">
 
-<table class="tablecolor" >
-
-    <thead class="thead" >  
+    <thead class="thead-dark" >  
        <tr>  
          <th>ID</th>  
          <th>TaskName</th>  
          <th>Description</th>  
-         <th>project_name</th>
-         <th>status type</th> 
-         <th>username</th>
+         <th>Project Name</th>
+         <th>Status Type</th> 
+         <th>UserName</th>
+         <th>StartDate</th>
+         <th>EndDate</th>
+         <th>Planned Budget</th>
          <th colspan="2">Actions</th>
          <!-- <th>Actual budget</th> -->
  
-        
+       </tr>
    </thead >     
     <tbody> 
         
@@ -27,19 +30,50 @@
        <td>{{ taskd.project_name }}</td> 
        <td>{{ taskd.status_type }}</td> 
        <td>{{taskd.username}}</td>
+       <td>{{taskd.planned_start_date}}</td>
+       <td>{{taskd.planned_end_date}}</td>
+       <td>{{taskd.planned_budget}}</td>
        
-       <td><button id="button1"><a routerLink="/updateadmin/{{taskd.id}}">Edit</a></button></td>
+       <td><button id="button1"><a routerLink="/updateadmin/{{taskd.id}}">Edit</a></button>
        
        
        <!-- <td><button id="button1">View</button></td>
         <td><button>Edit</button></td>   --> 
 
-        <td><button id="button2" (click)="delete(taskd.id)" >Delete</button></td> 
-
+        <button id="button2" (click)="delete(taskd.id)">Delete</button> 
+      
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Delete
           </button>
 
-          <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete this Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">Are you sure want to delete this Task</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="delete(taskd.id)">
+                  Yes
+                </button>
+              </div>
+            </div>
+          </div>
+
+</div>
+</td>
+</tr>
+
+</tbody>
           
-</table> 
+</table>
+
