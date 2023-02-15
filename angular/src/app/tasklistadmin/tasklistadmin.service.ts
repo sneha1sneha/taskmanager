@@ -31,7 +31,7 @@ export class TasklistadminService {
     return this.http.get(`/project/tasklistadmin`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log(res.body);
-        // return res.body;
+        
         return res.body.data;
       })
     );

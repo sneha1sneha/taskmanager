@@ -5,9 +5,7 @@ import { Observable, of,map} from 'rxjs';
 
 
 export interface AddtaskContext {
-//   username: string;
-//   password: string;
-  // remember?: boolean;
+
 }
 
 

@@ -53,7 +53,7 @@ export class UpdateadminService {
    getUpdateTask(id:any,requestObj: UpdateadminContext): Observable<any> {
     return this.http.put(`/project/managetaskadmin/${id}`, requestObj,{ observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
-        // console.log(res.body);
+        
         return res.body;
       })
     );

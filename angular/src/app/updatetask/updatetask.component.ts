@@ -113,7 +113,7 @@ getTask(id:any){
       }
     } catch (error) {
       // Log the error
-      log.error('login() funtion ', error);
+      log.error('Update() funtion ', error);
     }
 
 
@@ -128,7 +128,7 @@ private createForm() {
     description: ['', Validators.required],
     status_type: ['', Validators.required],
 
-    // remember: true,
+    
   });
 
 

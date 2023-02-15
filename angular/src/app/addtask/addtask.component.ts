@@ -154,7 +154,7 @@ export class AddtaskComponent implements OnInit {
       planned_budget: ['', Validators.required],
       username: ['', Validators.required],
 
-      // remember: true,
+      
     });
 
 

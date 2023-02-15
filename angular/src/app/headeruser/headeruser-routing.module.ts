@@ -8,12 +8,7 @@ import { AuthenticationGuard } from '@app/auth';
 import { TasklistComponent } from '@app/tasklist/tasklist.component';
 
 const routes: Routes = [
-//   Shell.childRoutes([
-//     { path: '', redirectTo: '', pathMatch: 'full' },
-//     // { path: 'Homeuser', component: HeaderuserComponent,canActivate:[AuthenticationGuard], data: { title: marker('Homeuser') } },
-//     // { path: 'tasklist', component: TasklistComponent,canActivate:[AuthenticationGuard], data: { title: marker('Tasklist') } },
-//     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
-//   ]),
+
 ];
 
 @NgModule({

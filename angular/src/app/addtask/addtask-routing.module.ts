@@ -17,7 +17,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '', pathMatch: 'full' },
     { path: 'addtask', component: AddtaskComponent,canActivate:[AuthenticationGuard], data: { title: marker('addTask') } },
-    // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
+    
   ]),
 ];
 

@@ -48,7 +48,7 @@ export class UpdatetaskService {
    getUpdateTask(id:any,requestObj: UpdatetaskContext): Observable<any> {
     return this.http.put(`/project/managetask/${id}`, requestObj,{ observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
-        // console.log(res.body);
+      
         return res.body;
       })
     );

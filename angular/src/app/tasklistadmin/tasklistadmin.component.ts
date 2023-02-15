@@ -40,16 +40,15 @@ export class TasklistadminComponent implements OnInit {
 
 
   onGridReady(params: GridReadyEvent) {
-    // this.rowData$ = this._tasklistService.getTasklist();
-
+    
   }
 
-  // Example of consuming Grid Event
+  //  consuming Grid Event
   onCellClicked(e: CellClickedEvent): void {
     console.log('cellClicked', e);
   }
 
-  // Example using Grid's API
+  //  Grid's API
   clearSelection(): void {
     this.agGrid.api.deselectAll();
   }
@@ -78,9 +77,7 @@ export class TasklistadminComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // const id= sessionStorage.getItem('userid')
-    // console.log("1", id)
-    // this.getTaskList();
+   
 
   }
   editProduct(row: any){
@@ -92,7 +89,7 @@ export class TasklistadminComponent implements OnInit {
   }
 
   getTaskList() {
-    // console.log(id)
+   
     // Show the loading indicator
     this.isLoading = true;
     try {
