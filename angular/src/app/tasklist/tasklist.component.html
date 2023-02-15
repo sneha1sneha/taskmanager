@@ -1,72 +1,42 @@
-<!-- <p>tasklist works!</p> -->
-<!-- header -->
 
 
-<ul class="nav">
-  <!-- <li><a routerLink="/home" >Home</a></li> -->
-  <li><a routerLink="/addproject" >Add Project</a></li>
-  <li><a routerLink="/tasklist"  >List</a></li>
-   <!-- <li><a routerLink="/update" >Update</a></li>  -->
-   <li><a routerLink="/about" >About Us</a></li>
-  <li><a routerLink="/contact" >Contact Us</a></li>
-  <li><a (click)="logout()">Log Out</a></li>
-</ul> 
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
+  <div class="container-fluid">
+    <div class="col-md-4 text-center company__info">
+      <span class="company__logo">
+        <h2><span class="fa fa-android"></span></h2>
+      </span>
+      <h4 class="company_title">TSG - Task Manager</h4>
+    </div>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a  class="nav-item nav-link active">Home</a>
+        <a  class="nav-item nav-link">Profile</a>
+        <li><a routerLink="/tasklist" class="nav-item nav-link active">List</a></li>
+        <a  class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <li><a (click)="logout()" class="nav-item nav-link active">Log Out</a></li>
+      </div>
+    </div>
+  </div>
+</nav>
 
 
 
+<div  id="grid-box">
+  <div >
+    <div >
+      <ag-grid-angular style= "height: 400px;" class="ag-theme-alpine" [rowData]="rowData"
+      [columnDefs]="columnDefs" [rowSelection]="'multiple'"
+      [animateRows]="true"
+      [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+    </div>
+  </div>
 
+</div>
 
-
-
-
-<table class="table table-hover" >
-
-    <thead class="thead" >  
-       <tr>  
-         <th>ID</th>  
-         <th>TaskName</th>  
-         <th>Description</th>  
-         <th>project_name</th>
-         <th>status type</th> 
-         <th colspan="2">Actions</th>
-         <!-- <th>Actual budget</th> -->
- 
-        
-   </thead >     
-    <tbody> 
-        
-      <tr *ngFor="let task of tasklists"> 
-         
-       <td>{{ task.id }}</td> 
-       <td>{{ task.task_name }}</td> 
-       <td>{{ task.description }}</td> 
-       <td>{{ task.project_name }}</td> 
-       <td>{{ task.status_type }}</td> 
-       
-       <td><button id="button1"><a routerLink="/updatetask/{{task.id}}" >Edit</a></button></td>
-       
-       
-       <!-- <td><button id="button1">View</button></td>
-        <td><button>Edit</button></td>   --> 
-
-        <!-- <td><button id="button2" (click)="delete(v.id)" >Delete</button></td>  -->
-         
-       </tr>   
-      </tbody> 
-</table> 
- <!-- [rowData]="rowData" 
-    [columnDefs]="columnDefs"  -->
-
-
-    <!-- <div>
-      <ag-grid-angular 
-        style="height: 200px;" 
-        class="ag-theme-balham"
-        [rowData]="rowData" 
-    [columnDefs]="columnDefs" 
-
-        >
-     
-    
-</ag-grid-angular>
-</div> -->

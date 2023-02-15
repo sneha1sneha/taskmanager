@@ -31,7 +31,7 @@ export class AddtaskService {
 
 
 
-   getemployeelist(): Observable<any> {
+   getEmployeeList(): Observable<any> {
     return this.http.get('/project/employeelist', { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
           console.log("res.body",res.body)
@@ -39,7 +39,7 @@ export class AddtaskService {
       })
     );
   }
-   getprojectlist(): Observable<any> {
+   getProjectList(): Observable<any> {
     return this.http.get('/project/projectlist', { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
           console.log("res.body",res.body)
@@ -52,7 +52,7 @@ export class AddtaskService {
 
 
   
-   postaddtask(requestObj: AddtaskContext): Observable<any> {
+   postAddTask(requestObj: AddtaskContext): Observable<any> {
     return this.http.post('/project/addtask', requestObj, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         return res.body;

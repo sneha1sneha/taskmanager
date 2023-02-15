@@ -28,7 +28,7 @@ export class UpdateadminService {
    */
 
 
-   gettaskadminn(id:any): Observable<any> {
+   getTaskAdminn(id:any): Observable<any> {
     return this.http.get(`/project/taskbyid/${id}`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log("response",res.body);
@@ -38,7 +38,7 @@ export class UpdateadminService {
   }
 
 
-  getemployeelist(): Observable<any> {
+  getEmployeeList(): Observable<any> {
     return this.http.get('/project/employeelist', { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
           console.log("res.body",res.body)
@@ -50,7 +50,7 @@ export class UpdateadminService {
 
 
 
-   getupdatetask(id:any,requestObj: UpdateadminContext): Observable<any> {
+   getUpdateTask(id:any,requestObj: UpdateadminContext): Observable<any> {
     return this.http.put(`/project/managetaskadmin/${id}`, requestObj,{ observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         // console.log(res.body);

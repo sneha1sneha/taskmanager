@@ -34,8 +34,8 @@ export class TasklistService {
   getTasklist(): Observable<any> {
     return this.http.get(`/project/tasklist`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
-        console.log(res.body);
-        return res.body;
+        console.log(res.body.data[0]);
+        return res.body.data;
       })
     );
   }

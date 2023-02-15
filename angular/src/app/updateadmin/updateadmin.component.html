@@ -1,14 +1,14 @@
 <!-- <p>updateadmin works!</p> -->
 <div class="container">
     <h1 class="text-center">Update Page</h1>
-    <form [formGroup]="updateForm"    (ngSubmit)="updatetask(id)"  >
+    <form [formGroup]="updateForm"    (ngSubmit)="updateTask(id)"  >
       <div class="form-group">
         <label for="taskName">Task Name:</label>
-        <input type="text" class="form-control" id="task_name"  formControlName="task_name" readonly>
+        <input type="text" class="form-control" id="task_name"  formControlName="task_name" >
       </div>
       <div class="form-group">
         <label for="description">Description:</label>
-        <textarea class="form-control" id="description" rows="3" formControlName="description" readonly ></textarea>
+        <textarea class="form-control" id="description" rows="3" formControlName="description"  ></textarea>
       </div>
       <div class="form-group">
         <label for="projectName">Project Name:</label>
@@ -22,7 +22,7 @@
     <select input type="text" class="form-control" class="form-select"  formControlName="status_type" >
         <small [hidden]="updateForm.controls['status_type'].valid || updateForm.controls['status_type'].untouched"
                   class="text-danger" translate>
-                  Password is required
+                  Status  is required
                 </small>
          
                                         <option >completed</option>
@@ -38,7 +38,7 @@
         <label for="inputState">Employee</label>
         <select class="form-select" aria-label="Default select example"
             formControlName="username">
-            <option *ngFor="let employee of employeelists"  
+            <option *ngFor="let employee of employeeLists"  
            >
         {{employee.username}}  
     </option>  

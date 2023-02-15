@@ -29,6 +29,7 @@ import { HomeuComponent } from './homeu/homeu.component';
 import { UpdateadminComponent } from './updateadmin/updateadmin.component';
 import { TasklistadminComponent } from './tasklistadmin/tasklistadmin.component'; 
 import { HomeuModule } from './homeu/homeu.module';
+import { HeaderuserComponent } from './headeruser/headeruser.component';
 
 @NgModule({
   imports: [
@@ -48,12 +49,13 @@ import { HomeuModule } from './homeu/homeu.module';
     TasklistModule,
     HomeuModule,
     AddtaskModule,
+    
     UpdatetaskModule,
     AuthRoutingModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderuserComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

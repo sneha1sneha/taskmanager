@@ -8,8 +8,10 @@ import { I18nModule } from '@app/i18n';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from '@app/auth/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule, NgbModule, I18nModule, AuthRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule, NgbModule, I18nModule, AuthRoutingModule, BrowserAnimationsModule, ToastrModule.forRoot({timeOut:1000,positionClass:'toast-top-right'}),],
   declarations: [LoginComponent,RegisterComponent],
 })
 export class AuthModule {}

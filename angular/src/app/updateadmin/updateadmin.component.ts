@@ -6,6 +6,7 @@ import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { UpdateadminService } from './updateadmin.service'; 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 const log = new Logger('updatetask');
 @Component({
   selector: 'app-updateadmin',
@@ -19,13 +20,14 @@ export class UpdateadminComponent implements OnInit {
   task_id:any
   errorObj!: boolean | false;
   updateForm!:FormGroup;
-  taskadmin:any
-  employeelists:any
-  constructor(private _updateadminService:UpdateadminService,
+  taskAdmin:any
+  employeeLists:any
+  constructor(private _updateAdminService:UpdateadminService,
     private _router: Router,
     private route: ActivatedRoute,
     private _activatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private _toasterService :ToastrService
     ) {
    
       this.createForm();
@@ -33,33 +35,33 @@ export class UpdateadminComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.gettaskadmin(this.id);
-      this.employeelist();
+    this.getTaskAdmin(this.id);
+      this.employeeList();
     // this.updatetask(id);
   }
 
 
 
 
-gettaskadmin(id:any){
+getTaskAdmin(id:any){
  
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._updateadminService.gettaskadminn(id).subscribe(
+        this._updateAdminService.getTaskAdminn(id).subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
           // Store the tasklists
-          this.taskadmin= response.data;
-          console.log(this.taskadmin[0])
+          this.taskAdmin= response.data;
+          console.log(this.taskAdmin[0])
           this.updateForm.patchValue({
-            task_name:this.taskadmin[0].task_name,
-            project_name:this.taskadmin[0].project_name,
-            description:this.taskadmin[0].description,
-            status_type:this.taskadmin[0].status_type,
-            username:this.taskadmin[0].username,
+            task_name:this.taskAdmin[0].task_name,
+            project_name:this.taskAdmin[0].project_name,
+            description:this.taskAdmin[0].description,
+            status_type:this.taskAdmin[0].status_type,
+            username:this.taskAdmin[0].username,
           })
          
         },
@@ -84,17 +86,17 @@ gettaskadmin(id:any){
 
 
 
- employeelist(){
+ employeeList(){
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._updateadminService.getemployeelist().subscribe(
+        this._updateAdminService.getEmployeeList().subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
           // Store the tasklists
-          this.employeelists= response.data;
+          this.employeeLists= response.data;
           debugger
         },
         (error) => {
@@ -131,7 +133,7 @@ gettaskadmin(id:any){
 
 
 
-  updatetask(id:any) {
+  updateTask(id:any) {
     console.log(id)
      // Show the loading indicator
      try {
@@ -141,11 +143,12 @@ gettaskadmin(id:any){
         // Show the loading indicator
         this.isLoading = true;
         // Call the register service
-        this._updateadminService.getupdatetask(id,this.updateForm.value).subscribe(
+        this._updateAdminService.getUpdateTask(id,this.updateForm.value).subscribe(
           (response) => {
             // Hide the loading indicator
             this.isLoading = false;
             console.log('response', response.data.affectedRows==1);
+            this._toasterService.success("Updated susceesfully")
             // Navigate to the home page
            this._router.navigate(['/tasklistadmin']);
           },

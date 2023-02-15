@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
 
-import { environment } from '@env/environment';
 
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AddtaskService } from './addtask.service';
+import { ToastrService } from 'ngx-toastr';
 const log = new Logger('addtask');
 @Component({
   selector: 'app-addtask',
@@ -15,38 +14,38 @@ const log = new Logger('addtask');
 })
 export class AddtaskComponent implements OnInit {
   errorObj!: boolean | false;
-
+ 
   addtaskError: boolean = false;
   isLoading: boolean = false;
   addtaskForm!: FormGroup;
-  projectlists:any;
-  employeelists:any;
-  constructor(private _addtaskService: AddtaskService,
+  projectLists:any;
+  employeeLists:any;
+  constructor(private _addTaskService: AddtaskService,
     private _router: Router,
     private _activatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder,
-
+    private _toasterService :ToastrService
   ) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.projectlist();
-    this.employeelist();
+    this.projectList();
+    this.employeeList();
 
   }
 
-  projectlist(){
+  projectList(){
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._addtaskService.getprojectlist().subscribe(
+        this._addTaskService.getProjectList().subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
           // Store the tasklists
-          this.projectlists= response.data;
+          this.projectLists= response.data;
           debugger
         },
         (error) => {
@@ -70,17 +69,17 @@ export class AddtaskComponent implements OnInit {
 
 
 
-  employeelist(){
+  employeeList(){
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._addtaskService.getemployeelist().subscribe(
+        this._addTaskService.getEmployeeList().subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
           // Store the tasklists
-          this.employeelists= response.data;
+          this.employeeLists= response.data;
           debugger
         },
         (error) => {
@@ -104,21 +103,25 @@ export class AddtaskComponent implements OnInit {
 
 
 
-  addtask() {
+  addTask() {
     debugger
     console.log("addtask")
     try {
+     
       // Check if the register form is valid
       if (this.addtaskForm.valid) {
+       
         // Show the loading indicator
         this.isLoading = true;
         // Call the register service
-        this._addtaskService.postaddtask(this.addtaskForm.value).subscribe(
+        this._addTaskService.postAddTask(this.addtaskForm.value).subscribe(
           (response) => {
             // Hide the loading indicator
             this.isLoading = false;
             console.log('response', response);
             // Navigate to the home page
+            
+            this._toasterService.success("successfully added")
             this._router.navigate(['/tasklistadmin']);
           },
           (error) => {
@@ -127,6 +130,7 @@ export class AddtaskComponent implements OnInit {
             // Show the error
             this.errorObj = true
             log.error('login() funtion ', error);
+           
           }
         );
       }
@@ -145,7 +149,7 @@ export class AddtaskComponent implements OnInit {
       project_name: ['', Validators.required],
       task_name: ['', Validators.required],
       description: ['', Validators.required],
-      planned_start_date: ['', Validators.required],
+      planned_start_date: ['', Validators.required,],
       planned_end_date: ['', Validators.required],
       planned_budget: ['', Validators.required],
       username: ['', Validators.required],
@@ -163,4 +167,8 @@ export class AddtaskComponent implements OnInit {
 
 
 
+
+function currentDateValidator(): any {
+  throw new Error('Function not implemented.');
+}
 

@@ -100,7 +100,7 @@ const ProjectService = {
 
     doaddproject: async (requestBody) => {
 
-
+try{
         const { project_name, planned_start_date, planned_end_date, actual_start_date, actual_end_date, project_description } = requestBody;
         let queryObj = `INSERT INTO project(project_name, planned_start_date, planned_end_date, actual_start_date, actual_end_date, project_description) VALUES("${project_name}", "${planned_start_date}", "${planned_end_date}", "${actual_start_date}", "${actual_end_date}", "${project_description}")`;
 
@@ -110,14 +110,17 @@ const ProjectService = {
         //   if (resultObj.length == 0) {
         //     throw new BadRequestError('Username or Password is invalid!');
         //   }
-
+}catch (error) {
+    // Log any errors that occur
+    logger.error(error);
+}
 
     },
 
 
     doaddtask: async (requestBody) => {
 
-
+try{
         const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,status_type,username} = requestBody;  
         let queryObj=`INSERT INTO task (task_name, description, planned_start_date, planned_end_date, planned_budget, project_id, Status_id, user_id3)
         SELECT '${task_name}', '${description}', '${planned_start_date}', '${planned_end_date}','${planned_budget}', project.id, status.id, user_id
@@ -130,7 +133,10 @@ const ProjectService = {
 
       return resultObj;
 
-
+}catch (error) {
+    // Log any errors that occur
+    logger.error(error);
+}
 
       },
 
@@ -180,16 +186,20 @@ domanagetask: async (httpRequest) => {
     console.log("httpRequest",httpRequest)
     let id = httpRequest.params.id;
     console.log("num",id)
+    try{
     const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,user_id3} = httpRequest.body; 
     let queryObj = `UPDATE task
     SET Status_id = (SELECT id FROM status WHERE status_type = '${status_type}')
     WHERE task_name = '${task_name}'
     AND project_id = (SELECT id FROM project WHERE project_name = '${project_name}')
-    AND user_id3 ='${id}';`;
+    AND id='${id}';`;
     const resultObj = await db.promise(queryObj);
     console.log(resultObj)
     return resultObj;
-
+    }catch (error) {
+        // Log any errors that occur
+        logger.error(error);
+    }
       },
 
 
@@ -239,7 +249,8 @@ domanagetask: async (httpRequest) => {
  domanagetaskadmin: async (httpRequest) => {
         console.log("httpRequest",httpRequest)
         let id = httpRequest.params.id;
-        console.log("num",id)
+        // console.log("num",id)
+try{
         const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,username} = httpRequest.body; 
         let queryObj = `UPDATE task
         SET task_name = '${task_name}',
@@ -251,7 +262,10 @@ domanagetask: async (httpRequest) => {
         const resultObj = await db.promise(queryObj);
         console.log(resultObj)
         return resultObj;
-    
+}catch (error) {
+    // Log any errors that occur
+    logger.error(error);
+}
           },
 
 
@@ -266,7 +280,7 @@ domanagetask: async (httpRequest) => {
             console.log("httpRequest", httpRequest);
             let id = httpRequest.params.id;
            
-           
+           try{
                
                 let queryObj = `DELETE  FROM task
                 WHERE id = '${id}';`;
@@ -277,7 +291,10 @@ domanagetask: async (httpRequest) => {
                 // Return the task list to the caller
                 
                 return resultObj;
-    
+           }catch (error) {
+            // Log any errors that occur
+            logger.error(error);
+        }
     
         },  
 

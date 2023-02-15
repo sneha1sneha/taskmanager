@@ -2,47 +2,13 @@
 
 
 
-
-
-// table {
-//     width: 100%;
-//     /* margin: 30px auto; */
-//     border-collapse: collapse;
-//   }
-// table,tr,th,td {
-//     border:solid rgb(1, 1, 7);
-//     /* background-color:rgb(38, 95, 148) */
-//  }
-//  #button1{
-//     background-color: darkgreen;
-//     text-align: center;
-//     width:100%
-//  }
-//  #button2{
-//     background-color: rgb(184, 21, 21);
-//     text-align: center;
-//     width:100%
-//  }
-//  .i{
-//      text-align: center;
-//      text-decoration: solid;
-//      /* background-color:  rgb(14, 89, 139); */
-//      font-size: 13px;
-//     background-color:#2779BF ;
-//     /* width:100%; */
-//     /* overflow: hidden; */
-     
-    
-//  }
-//  thead{
-//      background-color: rgb(14, 89, 139);
-//      height: 50px;
-//      color: aliceblue;
-     
-//  }
-
-
-
+.thead{
+   background-color: black;
+}
+th{
+   color: white;
+   height:75px
+}
 
 
 //  header
@@ -68,8 +34,21 @@ ul.nav {
    width:100%;
    overflow: hidden;
 }
+.navbar-expand-lg {
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+   height: 97px;
+  
+}
+
+
+#grid-box{
+   padding:30px;
+}
 
 
 
-
+.fa-android[_ngcontent-ooh-c110] {
+   font-size: 3em;
+}
 

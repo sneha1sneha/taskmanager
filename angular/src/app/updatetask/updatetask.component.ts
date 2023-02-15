@@ -4,6 +4,7 @@ import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { UpdatetaskService } from './updatetask.service'; 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 const log = new Logger('updatetask');
 @Component({
   selector: 'app-updatetask',
@@ -11,7 +12,7 @@ const log = new Logger('updatetask');
   styleUrls: ['./updatetask.component.scss']
 })
 export class UpdatetaskComponent implements OnInit {
-  updatetasks:any;
+  updateTasks:any;
   isLoading: boolean = false;
   id:any
   task_id:any
@@ -19,11 +20,12 @@ export class UpdatetaskComponent implements OnInit {
   updateForm!:FormGroup;
   tasks:any
   
-  constructor(private _updatetaskService:UpdatetaskService,
+  constructor(private _updateTaskService:UpdatetaskService,
     private _router: Router,
     private route: ActivatedRoute,
     private _activatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private _toasterService :ToastrService
     ) {
    
       this.createForm();
@@ -31,7 +33,7 @@ export class UpdatetaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.gettask(this.id);
+    this.getTask(this.id);
    
     // this.updatetask();
   }
@@ -39,13 +41,13 @@ export class UpdatetaskComponent implements OnInit {
 
 
 
-gettask(id:any){
+getTask(id:any){
  
     console.log("enterd")
     
       try{
         // Call the getTasklist service
-        this._updatetaskService.gettasks(id).subscribe(
+        this._updateTaskService.getTasks(id).subscribe(
           (response) => { 
              // Hide the loading indicator
           this.isLoading = false;
@@ -82,7 +84,7 @@ gettask(id:any){
 
 
 
-  updatetask(id:any) {
+  updateTask(id:any) {
     console.log(id)
      // Show the loading indicator
      try {
@@ -91,11 +93,12 @@ gettask(id:any){
         // Show the loading indicator
         this.isLoading = true;
         // Call the register service
-        this._updatetaskService.getupdatetask(id,this.updateForm.value).subscribe(
+        this._updateTaskService.getUpdateTask(id,this.updateForm.value).subscribe(
           (response) => {
             // Hide the loading indicator
             this.isLoading = false;
             console.log('response', response.data.affectedRows==1);
+            this._toasterService.success("Updated susceesfully")
             // Navigate to the home page
            this._router.navigate(['/tasklist']);
           },

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: marker('Login') } },
   { path: 'register', component: RegisterComponent, data: { title: marker('register') } },
   { path: 'Homeuser', component: HomeuComponent,canActivate:[AuthenticationGuard], data: { title: marker('Homeuser') } },
-  { path: 'tasklist', component: TasklistComponent,canActivate:[AuthenticationGuard] },
+  { path: 'tasklist', component: TasklistComponent,canActivate:[AuthenticationGuard],data: { title: marker('Tasklist') }  },
   { path: 'updatetask/:id', component: UpdatetaskComponent ,canActivate:[AuthenticationGuard], data: { title: marker('Updatetask') } },
 ];
 

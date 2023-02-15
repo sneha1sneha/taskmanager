@@ -28,7 +28,10 @@ const AuthService = {
       const passwordMatch = await bcrypt.compare(password, resultObj[0].password);
       if (!passwordMatch) {
         throw new BadRequestError('Username or Password is invalid!');
-      }console.log("res",resultObj);
+      }
+      
+      
+      console.log("res",resultObj);
 
       payload = {
         userId: resultObj[0].user_id,
@@ -74,6 +77,7 @@ const AuthService = {
         .promise(sqlObj, [, username, bcrypt.hashSync(password),first_name,last_name,email])
         .then((result) => {
           return result;
+          
         })
         .catch((err) => {
           // write error into logger file

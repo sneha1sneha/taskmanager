@@ -27,11 +27,12 @@ export class TasklistadminService {
    * @return The user credentials.
    */
 
-  getTasklistadmin(): Observable<any> {
+  getTaskListAdmin(): Observable<any> {
     return this.http.get(`/project/tasklistadmin`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log(res.body);
-        return res.body;
+        // return res.body;
+        return res.body.data;
       })
     );
   }

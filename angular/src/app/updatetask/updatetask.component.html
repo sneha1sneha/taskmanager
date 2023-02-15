@@ -1,22 +1,32 @@
 <!-- <p>updatetask works!</p> -->
 
-<ul class="nav">
-    <!-- <li><a routerLink="/home" >Home</a></li> -->
-    <li><a routerLink="/addproject" >Add Project</a></li>
-    <li><a routerLink="/tasklist"  >List</a></li>
-     <!-- <li><a routerLink="/update" >Update</a></li>  -->
-     <li><a routerLink="/about" >About Us</a></li>
-    <li><a routerLink="/contact" >Contact Us</a></li>
-    <li><a (click)="logout()">Log Out</a></li>
-</ul> 
-
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">Brand</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">Profile</a>
+                <li><a routerLink="/tasklist" class="nav-item nav-link active" >List</a></li> 
+                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <li><a (click)="logout()" class="nav-item nav-link active" >Log Out</a></li>
+            </div>
+        </div>
+    </div>
+  </nav>
+  
 
 
 
 
 <div class="container">
     <h1 class="text-center">Update Page</h1>
-    <form [formGroup]="updateForm"   (ngSubmit)="updatetask(id)" >
+    <form [formGroup]="updateForm"   (ngSubmit)="updateTask(id)" >
       <div class="form-group">
         <label for="taskName">Task Name:</label>
         <input type="text" class="form-control" id="task_name"  formControlName="task_name" readonly>
@@ -37,7 +47,7 @@
     <select input type="text" class="form-control" class="form-select"  formControlName="status_type" >
         <small [hidden]="updateForm.controls['status_type'].valid || updateForm.controls['status_type'].untouched"
                   class="text-danger" translate>
-                  Password is required
+                  Status is required
                 </small>
          
                                         <option value="completed">completed</option>
@@ -53,7 +63,7 @@
 
       <div class="d-flex justify-content-center">
         <button type="submit"
-            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update
+            class="btn btn-info btn-block btn-lg gradient-custom-4 text-body">Update
             Task</button>
     </div>
     </form>

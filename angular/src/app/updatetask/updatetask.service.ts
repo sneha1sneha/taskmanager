@@ -31,7 +31,7 @@ export class UpdatetaskService {
    */
 
 
-   gettasks(id:any): Observable<any> {
+   getTasks(id:any): Observable<any> {
     return this.http.get(`/project/taskbyid/${id}`, { observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         console.log("response",res.body);
@@ -45,7 +45,7 @@ export class UpdatetaskService {
 
 
 
-   getupdatetask(id:any,requestObj: UpdatetaskContext): Observable<any> {
+   getUpdateTask(id:any,requestObj: UpdatetaskContext): Observable<any> {
     return this.http.put(`/project/managetask/${id}`, requestObj,{ observe: "response" }).pipe(
       map((res: HttpResponse<any>) => {
         // console.log(res.body);

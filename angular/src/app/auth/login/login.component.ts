@@ -7,6 +7,7 @@ import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from '../authentication.service';
 import { CredentialsService } from '@app/auth';
+import { ToastrService } from 'ngx-toastr';
 
 
 const log = new Logger('Login');
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private _formBuilder: FormBuilder,
     private _credentialService: CredentialsService,
+    private _toasterService :ToastrService
   ) {
     this.createForm();
   }
@@ -65,13 +67,14 @@ export class LoginComponent implements OnInit {
              // Navigate to the home page
             if(response.data.userId == 21){
             console.log("adminpage")
-            this._router.navigate(['/home']);}
+            this._router.navigate(['/home']);
+            this._toasterService.success("Admin LOGGED in")}
             else{
               this._router.navigate(['/Homeuser']);
+              this._toasterService.success("user LOGGED in")
             }
            
-           const user= sessionStorage.getItem('userid')
-           console.log("1", user)
+          
           },
           (error) => {
              // Hide the loading indicator
@@ -79,6 +82,7 @@ export class LoginComponent implements OnInit {
             // Show the error
             this.errorObj = true
             log.error('login() funtion ', error);
+            console.log("error",error)
           }
         );
       }

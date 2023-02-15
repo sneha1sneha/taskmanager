@@ -37,8 +37,8 @@ const logger = winston.createLogger({
 });
 
 if (NODE_ENV === 'production') {
-  logger.add(new winston.transports.File({ filename: 'logs/error.log', level: 'error' }));
-  logger.add(new winston.transports.File({ filename: 'logs/combined.log', level: 'debug' }));
+  logger.add(new winston.transports.File({ filename: 'error.log', level: 'error' }));
+  logger.add(new winston.transports.File({ filename: 'combined.log', level: 'debug' }));
 }
 
 module.exports = logger;

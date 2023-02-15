@@ -11,8 +11,8 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Add Task</h2>
-
-                            <form (ngSubmit)="addtask()" [formGroup]="addtaskForm" novalidate>
+                           
+                            <form (ngSubmit)="addTask()" [formGroup]="addtaskForm" novalidate>
 
 
                                 <div class="form-outline mb-4">
@@ -21,7 +21,7 @@
                                         formControlName="project_name" >
 
 
-                                        <option *ngFor="let project of projectlists"  
+                                        <option *ngFor="let project of projectLists"  
                                         >  
                                     {{project.project_name}}  
                                 </option>  
@@ -48,7 +48,7 @@
                                     <small
                                         [hidden]="addtaskForm.controls['project_name'].valid || addtaskForm.controls['project_name'].untouched"
                                         class="text-danger" translate>
-                                        projectname is required
+                                        Projectname is required
                                     </small>
                                 </div>
 
@@ -75,7 +75,11 @@
                                         [placeholder]="'description' | translate" />
                                     <span hidden translate>description</span>
 
-
+                                    <small
+                                    [hidden]="addtaskForm.controls['description'].valid || addtaskForm.controls['description'].untouched"
+                                    class="text-danger" translate>
+                                    description name is required
+                                </small>
 
                                 </div>
 
@@ -84,79 +88,70 @@
                                     <label for="inputState">Employee</label>
                                     <select class="form-select" aria-label="Default select example"
                                         formControlName="username">
-                                        <option *ngFor="let employee of employeelists"  
+                                        <option *ngFor="let employee of employeeLists"  
                                        >
                                     {{employee.username}}  
                                 </option>  
                                     </select>
+                                    <small
+                                    [hidden]="addtaskForm.controls['username'].valid || addtaskForm.controls['username'].untouched"
+                                    class="text-danger" translate>
+                                    employee name is required
+                                </small>
                                     <label class="form-label" for="form3Example3cg"></label>
                                 </div>
 
 
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3cg">planned_start_date</label>
+                                    <label class="form-label" for="form3Example3cg">StartDate </label>
                                     <input type="date" id="form3Example3cg" class="form-control form-control-lg"
                                         formControlName="planned_start_date" autocomplete="planned_start_date"
                                         [placeholder]="'planned_start_date' | translate" />
-                                    <span hidden translate>planned_start_date</span>
-                                    <div > </div>
+                                    <span hidden translate> StartDate </span>
+                                    <small
+                                    [hidden]="addtaskForm.controls['planned_start_date'].valid || addtaskForm.controls['planned_start_date'].untouched"
+                                    class="text-danger" translate>
+                                   StartDate is required
+                                </small>
+
+                                   
 
 
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4cg">planned_end_date</label>
+                                    <label class="form-label" for="form3Example4cg">EndDate</label>
                                     <input type="date" id="form3Example4cg" class="form-control form-control-lg"
                                         formControlName="planned_end_date" autocomplete="planned_end_date"
                                         [placeholder]="'planned_end_date' | translate" />
-                                    <span hidden translate>planned_end_date</span>
+                                    <span hidden translate>EndDate</span>
 
+                                    <small
+                                    [hidden]="addtaskForm.controls['planned_end_date'].valid || addtaskForm.controls['planned_end_date'].untouched"
+                                    class="text-danger" translate>
+                                   EndDate is required
+                                </small>
 
 
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4cg">planned_budget</label>
+                                    <label class="form-label" for="form3Example4cg">Planned Budget</label>
                                     <input type="tel" id="form3Example4cg" class="form-control form-control-lg"
                                         formControlName="planned_budget" autocomplete="planned_budget"
-                                        [placeholder]="'planned_budget' | translate" />
-                                    <span hidden translate>planned_budget</span>
+                                        [placeholder]="'Planned Budget' | translate" />
+                                    <span hidden translate>Planned Budget</span>
+                                    <small
+                                    [hidden]="addtaskForm.controls['planned_budget'].valid || addtaskForm.controls['planned_budget'].untouched"
+                                    class="text-danger" translate>
+                                   Planned Budget is required
+                                </small>
 
 
                                 </div>
 
-                                <!-- <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3cg">actual_start_date</label>
-                                    <input type="date" id="form3Example3cg" class="form-control form-control-lg"
-                                        formControlName="actual_start_date" autocomplete="actual_start_date"
-                                        [placeholder]="'actual_start_date' | translate" />
-                                    <span hidden translate>actual_start_date</span>
-
-
-                                </div> -->
-
-                                <!-- <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4cg">actual_end_date</label>
-                                    <input type="date" id="form3Example4cg" class="form-control form-control-lg"
-                                        formControlName="actual_end_date" autocomplete="actual_end_date"
-                                        [placeholder]="'actual_end_date' | translate" />
-                                    <span hidden translate>actual_end_date</span>
-
-
-
-                                </div> -->
-
-                                <!-- <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4cg">actual_budget</label>
-                                    <input type="number" id="form3Example4cg" class="form-control form-control-lg"
-                                        formControlName="actual_budget" autocomplete="actual_budget"
-                                        [placeholder]="'actual_budget' | translate" />
-                                    <span hidden translate>actual_budget</span>
-
-
-                                </div> -->
-
+                               
 
 
 

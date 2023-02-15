@@ -36,7 +36,7 @@ const validateRegistration = (httpRequest) => {
       .messages({
         'string.pattern.base': 'Provide valid email!'
       }),
-    password: Joi.string().min(7).alphanum()
+    password: Joi.string().min(7)
   });
   return schema.validate(httpRequest.body, options);
 };
