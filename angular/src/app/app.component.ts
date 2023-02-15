@@ -24,9 +24,16 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private translateService: TranslateService,
     private i18nService: I18nService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      console.log("event", event);
+    });
     // Setup logger
     if (environment.production) {
       Logger.enableProductionMode();

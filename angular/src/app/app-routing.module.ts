@@ -6,11 +6,7 @@ import { AuthenticationGuard } from './auth';
 import { TasklistComponent } from './tasklist/tasklist.component';
 const routes: Routes = [
   // Fallback when no prior route is matched
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
-  
-  // { path: 'tasklist', component: TasklistComponent,canActivate:[AuthenticationGuard] },
-  // { path: 'Homeuser', component: HomeuComponent,canActivate:[AuthenticationGuard] },
-
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -20,20 +20,28 @@ ul.nav {
   background-color: #3D99CE;
   text-align: center;
 }
-ul.nav > li {
+
+ul.nav>li {
   display: inline-block;
   padding: 10px 20px;
 }
-ul.nav > li:hover {
+
+ul.nav>li:hover {
   background-color: #2779BF;
 }
-ul.nav > li > a {
+
+ul.nav>li>a {
   color: white;
   text-decoration: none;
 }
-.menu{
+
+.menu {
   font-size: 13px;
-  background-color:#2779BF ;
-  width:100%;
+  background-color: #2779BF;
+  width: 100%;
   overflow: hidden;
+}
+
+.widget-content-wrapper {
+  padding: 10px;
 }

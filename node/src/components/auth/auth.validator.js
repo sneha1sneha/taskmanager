@@ -15,7 +15,7 @@ const validateLogin = (httpRequest) => {
       .messages({
         'string.pattern.base': 'Provide valid username'
       }),
-    password: Joi.string().min(7).alphanum().required()
+    password: Joi.string().min(7)
   });
   return schema.validate(httpRequest.body, options);
 };

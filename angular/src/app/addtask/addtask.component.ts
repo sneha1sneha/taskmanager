@@ -129,14 +129,14 @@ export class AddtaskComponent implements OnInit {
             this.isLoading = false;
             // Show the error
             this.errorObj = true
-            log.error('login() funtion ', error);
+            log.error('addatsk() funtion ', error);
            
           }
         );
       }
     } catch (error) {
       // Log the error
-      log.error('login() funtion ', error);
+      log.error('addatsk() funtion ', error);
     }
 
 
@@ -168,7 +168,4 @@ export class AddtaskComponent implements OnInit {
 
 
 
-function currentDateValidator(): any {
-  throw new Error('Function not implemented.');
-}
 

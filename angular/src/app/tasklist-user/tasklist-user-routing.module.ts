@@ -2,16 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
-import { HomeuComponent } from './homeu.component';
 import { Shell } from '@app/shell/shell.service';
 import { AuthenticationGuard } from '@app/auth';
-import { TasklistComponent } from '@app/tasklist/tasklist.component';
+import { TasklistUserComponent } from './tasklist-user.component';
 import { RoleGuard } from '@app/auth/roleGuard';
 
 const routes: Routes = [
     Shell.childRoutes([
         { path: '', redirectTo: '', pathMatch: 'full' },
-
+        { path: 'tasklistuser', component: TasklistUserComponent,  data: { title: marker('Tasklist') } },
         // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
     ]),
 ];
@@ -21,6 +20,6 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [],
 })
-export class HomeuRoutingModule {
+export class TasklistuserRoutingModule {
 
 }

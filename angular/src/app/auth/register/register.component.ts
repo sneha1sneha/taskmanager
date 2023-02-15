@@ -18,7 +18,7 @@ const log = new Logger('register');
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  
+
 
   errorObj!: boolean | false;
 
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     private _activatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private _toasterService :ToastrService
+    private _toasterService: ToastrService
   ) {
     this.createForm();
   }
@@ -44,26 +44,30 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.valid) {
         // Show the loading indicator
         this.isLoading = true;
-         // Log the form data
+        // Log the form data
         console.log('this.registerForm.valid', this.registerForm.value);
         // Call the register service
         this.authenticationService.register(this.registerForm.value).subscribe(
           (response) => {
-             // Hide the loading indicator
-             if(response.data.status==400){
+            // Hide the loading indicator
+            if (response?.data?.status == 200) {
+
+              this.isLoading = false;
+              this._toasterService.success("Registered Succesfully")
+              this._router.navigate(['/login']);
+            }
+            else {
+              this.isLoading = false;
               this._toasterService.error("Username already in use")
-             }
-             else{
-            this._toasterService.success("Registered Succesfully")
-            this.isLoading = false;
+            }
             console.log('response', response);
             // Navigate to the home page
-            this._router.navigate(['/home']);}
+
           },
           (error) => {
-             // Hide the loading indicator
+            // Hide the loading indicator
             this.isLoading = false;
-             // Show the error
+            // Show the error
             this.errorObj = true
             log.error('register() funtion ', error);
           }
@@ -81,15 +85,15 @@ export class RegisterComponent implements OnInit {
 
   private createForm() {
     this.registerForm = this.formBuilder.group({
-    
-     
-     
-      username: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(10)]],
-      password: ['',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,11}$/)]],
-      email: ['',Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)],
+
+
+
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,11}$/)]],
+      email: ['', Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-     
+
     });
 
   }

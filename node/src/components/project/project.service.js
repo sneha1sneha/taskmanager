@@ -35,10 +35,9 @@ const ProjectService = {
                     ON  t.Status_id = s.id
                     WHERE t.user_id3 ='${id}';`;
 
-            // let queryObj = `SELECT * FROM task; `;
-            // Execute the query and store the result in "taskList"
+           
             const resultObj = await db.promise(queryObj);
-            console.log("resultObj", JSON.stringify(resultObj))
+           
             // Return the task list to the caller
             return resultObj;
 
@@ -49,7 +48,7 @@ const ProjectService = {
 
 
     },
-
+// Function to retrieve a projectlist of tasks from the database
     getProjectList: async (httpRequest) => {
        
         
@@ -58,7 +57,7 @@ const ProjectService = {
             let queryObj = `SELECT id,project_name FROM project; `;
             // Execute the query and store the result in "projrectList"
             const resultObj = await db.promise(queryObj);
-            console.log("resultObj", JSON.stringify(resultObj))
+            
             // Return the task list to the caller
             return resultObj;
 
@@ -70,7 +69,7 @@ const ProjectService = {
 
     },
 
-
+// Function to retrieve a employeelist of  from the database
     GetEmployeeList: async (httpRequest) => {
        
         
@@ -79,7 +78,7 @@ const ProjectService = {
             let queryObj = `SELECT user_id,username FROM user; `;
             // Execute the query and store the result in "employeeList"
             const resultObj = await db.promise(queryObj);
-            console.log("resultObj", JSON.stringify(resultObj))
+           
             // Return the task list to the caller
             return resultObj;
 
@@ -96,20 +95,19 @@ const ProjectService = {
 
 
 
-    // add project  function
+    // add project  function wiil call to add new task to database
 
     doaddproject: async (requestBody) => {
 
 try{
         const { project_name, planned_start_date, planned_end_date, actual_start_date, actual_end_date, project_description } = requestBody;
+         // Execute the query and store the result in "addproject"
         let queryObj = `INSERT INTO project(project_name, planned_start_date, planned_end_date, actual_start_date, actual_end_date, project_description) VALUES("${project_name}", "${planned_start_date}", "${planned_end_date}", "${actual_start_date}", "${actual_end_date}", "${project_description}")`;
 
         const resultObj = await db.promise(queryObj);
-        //  console.log(resultObj)
+         // Return the task list to the caller
         return resultObj;
-        //   if (resultObj.length == 0) {
-        //     throw new BadRequestError('Username or Password is invalid!');
-        //   }
+    
 }catch (error) {
     // Log any errors that occur
     logger.error(error);
@@ -117,11 +115,12 @@ try{
 
     },
 
-
+// Function to add taskof tasks from the database
     doaddtask: async (requestBody) => {
 
 try{
         const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,status_type,username} = requestBody;  
+         // Execute the query and store the result in addtask
         let queryObj=`INSERT INTO task (task_name, description, planned_start_date, planned_end_date, planned_budget, project_id, Status_id, user_id3)
         SELECT '${task_name}', '${description}', '${planned_start_date}', '${planned_end_date}','${planned_budget}', project.id, status.id, user_id
         FROM status, user, project
@@ -130,7 +129,7 @@ try{
         AND user.username = '${username}'
         ;`;
         const resultObj = await db.promise(queryObj);
-
+ // Return the task list to the caller
       return resultObj;
 
 }catch (error) {
@@ -140,11 +139,11 @@ try{
 
       },
 
-
+// function to take specific task by id
     gettaskbyid: async (httpRequest) => {
         let id = httpRequest.params.id;
-        console.log(id)
-        
+       
+       // Execute the query and store the result in gettask
         try {
 
             let queryObj =  `SELECT t.id, t.task_name, t.description, p.project_name ,s.status_type,u.username
@@ -157,16 +156,9 @@ try{
             ON  t.user_id3 = u.user_id
              WHERE t.id =${id}; `;
             
-            // let queryObj = `SELECT  t.task_name, t.description, p.project_name ,s.status_type
-            // FROM trial.task t
-            // LEFT JOIN trial.project p
-            // ON t.project_id = p.id
-            // LEFT JOIN trial.status  s
-            // ON  t.Status_id = s.id
-            // WHERE t.id =${id}; `;
-            // Execute the query and store the result in "taskList"
+          
             const resultObj = await db.promise(queryObj);
-            console.log("resultObj", JSON.stringify(resultObj))
+            
             // Return the task list to the caller
             return resultObj;
 
@@ -181,11 +173,11 @@ try{
 
 
 
-
+// Function mange tasks from the database
 domanagetask: async (httpRequest) => {
-    console.log("httpRequest",httpRequest)
+   
     let id = httpRequest.params.id;
-    console.log("num",id)
+    // Execute the query and store the result in managetask
     try{
     const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,user_id3} = httpRequest.body; 
     let queryObj = `UPDATE task
@@ -194,7 +186,7 @@ domanagetask: async (httpRequest) => {
     AND project_id = (SELECT id FROM project WHERE project_name = '${project_name}')
     AND id='${id}';`;
     const resultObj = await db.promise(queryObj);
-    console.log(resultObj)
+    //  Return the task list to the caller
     return resultObj;
     }catch (error) {
         // Log any errors that occur
@@ -203,21 +195,10 @@ domanagetask: async (httpRequest) => {
       },
 
 
-
-
-
-
-
-
-
-
-
-
-
+// function to get all the list task 
       gettasklistadmin: async (httpRequest) => {
         console.log("httpRequest", httpRequest);
-        // let id = httpRequest.params.id;
-        //  let id = httpRequest.body.userId;
+      
         try {
             // SQL query to select all tasks from the "task" table
 
@@ -231,10 +212,10 @@ domanagetask: async (httpRequest) => {
             ON  t.user_id3 = u.user_id`
                   
 
-            // let queryObj = `SELECT * FROM task; `;
+          
             // Execute the query and store the result in "taskList"
             const resultObj = await db.promise(queryObj);
-            console.log("resultObj", JSON.stringify(resultObj))
+          
             // Return the task list to the caller
             return resultObj;
 
@@ -245,11 +226,11 @@ domanagetask: async (httpRequest) => {
 
 
     },
-
+// Function to change  tasks details from the database
  domanagetaskadmin: async (httpRequest) => {
-        console.log("httpRequest",httpRequest)
+     
         let id = httpRequest.params.id;
-        // console.log("num",id)
+     
 try{
         const {task_name,project_name,description,planned_start_date,planned_end_date,planned_budget,actual_start_date,actual_end_date,actual_budget,status_type,username} = httpRequest.body; 
         let queryObj = `UPDATE task
@@ -260,7 +241,7 @@ try{
         user_id3 = (SELECT user_id FROM user WHERE username = '${username}')
         WHERE task.id = '${id}';`;
         const resultObj = await db.promise(queryObj);
-        console.log(resultObj)
+      
         return resultObj;
 }catch (error) {
     // Log any errors that occur
@@ -269,15 +250,9 @@ try{
           },
 
 
-        //   planned_start_date = '${planned_start_date}',
-        //   planned_end_date = '${planned_end_date}',
-        //   planned_budget = '${planned_budget}',
-        //   actual_start_date = '${actual_start_date}',
-        //   actual_end_date = '${actual_end_date}',
-        //   actual_budget = '${actual_budget}',
-
+// Function to deletetasks from the database
  dodelete: async (httpRequest) => {
-            console.log("httpRequest", httpRequest);
+            
             let id = httpRequest.params.id;
            
            try{
@@ -287,16 +262,16 @@ try{
     
                
                 const resultObj = await db.promise(queryObj);
-                console.log("resultObj", JSON.stringify(resultObj))
+                
                 // Return the task list to the caller
                 
                 return resultObj;
+    
            }catch (error) {
             // Log any errors that occur
             logger.error(error);
         }
-    
-        },  
+},          
 
 
 

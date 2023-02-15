@@ -27,9 +27,11 @@ import { UpdatetaskModule } from './updatetask/updatetask.module';
 
 import { HomeuComponent } from './homeu/homeu.component';
 import { UpdateadminComponent } from './updateadmin/updateadmin.component';
-import { TasklistadminComponent } from './tasklistadmin/tasklistadmin.component'; 
+
 import { HomeuModule } from './homeu/homeu.module';
 import { HeaderuserComponent } from './headeruser/headeruser.component';
+import { TasklistUserComponent } from './tasklist-user/tasklist-user.component';
+import { TasklistuserModule } from './tasklist-user/tasklist-user.module';
 
 @NgModule({
   imports: [
@@ -49,9 +51,9 @@ import { HeaderuserComponent } from './headeruser/headeruser.component';
     TasklistModule,
     HomeuModule,
     AddtaskModule,
-    
     UpdatetaskModule,
     AuthRoutingModule,
+    TasklistuserModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     ReactiveFormsModule,
   ],

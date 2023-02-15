@@ -100,7 +100,7 @@ getTask(id:any){
             console.log('response', response.data.affectedRows==1);
             this._toasterService.success("Updated susceesfully")
             // Navigate to the home page
-           this._router.navigate(['/tasklist']);
+           this._router.navigate(['/tasklistuser']);
           },
           (error) => {
             // Hide the loading indicator

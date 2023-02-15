@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { Router } from '@angular/router';
-import { TasklistService } from './tasklist.service';
+import { TasklistuserService } from './tasklist-user.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
@@ -9,11 +9,11 @@ import { ButtonRendererComponent } from './button-renderer.component';
 const log = new Logger('tasklist');
 
 @Component({
-  selector: 'app-tasklist',
-  templateUrl: './tasklist.component.html',
-  styleUrls: ['./tasklist.component.scss']
+  selector: 'app-tasklist-user',
+  templateUrl: './tasklist-user.component.html',
+  styleUrls: ['./tasklist-user.component.scss']
 })
-export class TasklistComponent implements OnInit {
+export class TasklistUserComponent implements OnInit {
   errorObj!: boolean | false;
   tasklists: any;
   frameworkComponents: any;
@@ -24,15 +24,16 @@ export class TasklistComponent implements OnInit {
   public rowData$!: Observable<any[]>;
   private _router: any;
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-  constructor(private _tasklistService: TasklistService,private router: Router
-    ) {
-      this.frameworkComponents = { 
-        buttonRenderer: ButtonRendererComponent,
-      }
-    this.getTasklist();
+ 
+  constructor(private _tasklistuserService: TasklistuserService,private router: Router) {
 
-  }
-  onGridReady(params: GridReadyEvent) {
+    this.frameworkComponents = { 
+      buttonRenderer: ButtonRendererComponent,
+    }
+  this.getTasklist();
+   }
+
+   onGridReady(params: GridReadyEvent) {
 
    
   }
@@ -51,15 +52,15 @@ export class TasklistComponent implements OnInit {
     filter: true,
   };
   columnDefs= [
-    { headerName: 'ID', field: 'id' },
-    { headerName: 'Task Name', field: 'task_name', filter: true, floatingFilter: true ,width: 120 },
-    { headerName: 'Description', field: 'description',filter: true, floatingFilter: true,width: 120 },
-    { headerName: 'Project Name', field: 'project_name' ,filter: true, floatingFilter: true ,width: 120 },
-    { headerName: 'Status', field: 'status_type' ,filter: true, floatingFilter: true,width: 120 },
-    { headerName: 'Edit', field: 'button', 
+    { headerName: 'ID', field: 'id' ,width: 90},
+    { headerName: 'Task Name', field: 'task_name', filter: true, floatingFilter: true ,width: 250  },
+    { headerName: 'Description', field: 'description',filter: true, floatingFilter: true,width: 250 },
+    { headerName: 'Project Name', field: 'project_name' ,filter: true, floatingFilter: true ,width: 250  },
+    { headerName: 'Status', field: 'status_type' ,filter: true, floatingFilter: true,width: 250 },
+    { headerName: 'Action', field: 'button', 
     cellRenderer: 'buttonRenderer', 
     cellRendererParams: { onClick: this.editProduct.bind(this), 
-      label: 'Edit' }, }
+      label: 'Edit' },width: 250 }
   
   
      
@@ -68,12 +69,10 @@ export class TasklistComponent implements OnInit {
 
   ];
 
-  
- 
+
   ngOnInit(): void {
-   
-   
   }
+
   editProduct(row: any){
     
     this.id=row.rowData.id
@@ -82,12 +81,13 @@ export class TasklistComponent implements OnInit {
     
   }
 
+
   getTasklist() {
     
     this.isLoading = true;
     try {
       // Call the tasklistService service
-      this._tasklistService.getTasklist().subscribe(
+      this._tasklistuserService.getTasklist().subscribe(
         (response) => {
           // Hide the loading indicator
           this.isLoading = false;
@@ -124,4 +124,5 @@ logout()
 
 
 }
+
 

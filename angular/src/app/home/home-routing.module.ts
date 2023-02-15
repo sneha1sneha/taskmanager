@@ -6,11 +6,11 @@ import { HomeComponent } from './home.component';
 import { Shell } from '@app/shell/shell.service';
 import { AuthenticationGuard } from '@app/auth';
 import { TasklistadminComponent } from '@app/tasklistadmin/tasklistadmin.component';
-
+import { RoleGuard } from '@app/auth/roleGuard';
 const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, canActivate:[AuthenticationGuard], data: { title: marker('Home') } },
+    { path: 'home', component: HomeComponent, canActivate: [RoleGuard.forRoles(2)], data: { title: marker('Home') } },
     // { path: 'tasklistadmin', component: TasklistadminComponent,canActivate:[AuthenticationGuard], data: { title: marker('Tasklist') } },
     // { path: 'home', component: HomeComponent, data: { title: marker('Home') } },
   ]),

@@ -58,18 +58,18 @@ export class TasklistadminComponent implements OnInit {
   };
   columnDefs = [
     { headerName: 'ID', field: 'id', width: 60 },
-    { headerName: 'Task Name', field: 'task_name', filter: true, floatingFilter: true, width: 120 },
+    { headerName: 'Task Name', field: 'task_name', filter: true, floatingFilter: true, width: 180 },
     { headerName: 'Description', field: 'description', filter: true, floatingFilter: true, width: 180 },
-    { headerName: 'Project Name', field: 'project_name', filter: true, floatingFilter: true, width: 120 },
-    { headerName: 'Employee Name', field: 'username', filter: true, floatingFilter: true, width: 120 },
-    { headerName: 'Status', field: 'status_type', filter: true, floatingFilter: true, width: 120 },
-    { headerName: 'Delete', field: 'button', cellRenderer: 'buttonRenderer', 
-    cellRendererParams: { onClick: this.delete.bind(this), label: 'Delete' 
-  }, },
-    { headerName: 'Edit', field: 'button', 
+    { headerName: 'Project Name', field: 'project_name', filter: true, floatingFilter: true, width: 180 },
+    { headerName: 'Employee Name', field: 'username', filter: true, floatingFilter: true, width: 180 },
+    { headerName: 'Status', field: 'status_type', filter: true, floatingFilter: true, width: 180 },
+    { headerName: 'Actions', field: 'button', 
     cellRenderer: 'buttonRenderer', 
     cellRendererParams: { onClick: this.editProduct.bind(this), 
-      label: 'Edit' }, }
+      label: 'Edit' },width: 85 },
+      { headerName: '', field: 'button', cellRenderer: 'buttonRenderer', 
+      cellRendererParams: { onClick: this.delete.bind(this), label: 'Delete' 
+    }, },
   
    ];
 

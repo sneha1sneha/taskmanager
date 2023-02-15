@@ -19,20 +19,20 @@ const log = new Logger('Login');
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  
+
   errorObj!: boolean | false;
-  
+
   loginError: boolean = false;
   isLoading: boolean = false;
   loginForm!: FormGroup;
-  userid:any;
+  userid: any;
   constructor(
     private _router: Router,
     private _activatedRouter: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private _formBuilder: FormBuilder,
     private _credentialService: CredentialsService,
-    private _toasterService :ToastrService
+    private _toasterService: ToastrService
   ) {
     this.createForm();
   }
@@ -48,41 +48,44 @@ export class LoginComponent implements OnInit {
     try {
       // Check if the login form is valid
       if (this.loginForm.valid) {
-         // Show the loading indicator
+        // Show the loading indicator
         this.isLoading = true;
         // Log the form data
         console.log('this.loginForm.valid', this.loginForm.value);
-         // Call the login service
+        // Call the login service
         this.authenticationService.login(this.loginForm.value).subscribe(
           (response) => {
-  // Hide the loading indicator
+            // Hide the loading indicator
             this.isLoading = false;
-             // Log the response
+            // Log the response
             console.log('response', response);
             // Store the credentials
 
-            this._credentialService.setCredentials(response)
-            
-            console.log("id",response.data.userId)
-             // Navigate to the home page
-            if(response.data.userId == 21){
-            console.log("adminpage")
-            this._router.navigate(['/home']);
-            this._toasterService.success("Admin LOGGED in")}
-            else{
-              this._router.navigate(['/Homeuser']);
-              this._toasterService.success("user LOGGED in")
+
+
+            console.log("id", response.data.userId)
+            // Navigate to the home page
+            if (response.data.userRole == 2) {
+              console.log("adminpage")
+              this._router.navigate(['/home']);
+              this._toasterService.success("Admin LOGGED in")
+              this._credentialService.setCredentials(response)
             }
-           
-          
+            else {
+              this._router.navigate(['/tasklistuser']);
+              this._toasterService.success("user LOGGED in")
+              this._credentialService.setCredentials(response)
+            }
+
+
           },
           (error) => {
-             // Hide the loading indicator
+            // Hide the loading indicator
             this.isLoading = false;
             // Show the error
             this.errorObj = true
             log.error('login() funtion ', error);
-            console.log("error",error)
+            console.log("error", error)
           }
         );
       }
